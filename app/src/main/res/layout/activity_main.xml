@@ -43,7 +43,7 @@
                 android:layout_marginTop="90dp"
                 android:background="@drawable/nigerian_tiles_menu"
                 app:layout_constraintLeft_toRightOf="@id/tileCalculator"
-                app:layout_constraintRight_toLeftOf="@id/userAccount"
+                app:layout_constraintRight_toLeftOf="@id/myCatalog"
                 app:layout_constraintTop_toTopOf="parent" >
 
                 <ImageView
@@ -55,11 +55,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/userAccount"
+                android:id="@+id/myCatalog"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="90dp"
-                android:background="@drawable/user_account_menu"
+                android:background="@drawable/my_catalog_menu"
                 app:layout_constraintLeft_toRightOf="@id/nigerianTiles"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" >
@@ -118,7 +118,7 @@
                 android:background="@drawable/goodwill_catalog_menu"
                 app:layout_constraintLeft_toRightOf="@id/goldenCrownCatalog"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/userAccount" >
+                app:layout_constraintTop_toBottomOf="@id/myCatalog" >
 
                 <ImageView
                     android:visibility="gone"
