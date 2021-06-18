@@ -7,29 +7,130 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainActivityLayout"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:visibility="gone"
+            <LinearLayout
                 android:id="@+id/tileCalculator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/tile_calculator_menu"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/nigerianTiles"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/tileCalculatorIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nigerianTiles"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/nigerian_tiles_menu"
+                app:layout_constraintLeft_toRightOf="@id/tileCalculator"
+                app:layout_constraintRight_toLeftOf="@id/userAccount"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/nigerianTilesIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/userAccount"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/user_account_menu"
+                app:layout_constraintLeft_toRightOf="@id/nigerianTiles"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/userAccountIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bnCatalog"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/bn_catalog_menu"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/goldenCrownCatalog"
+                app:layout_constraintTop_toBottomOf="@id/tileCalculator" >
+
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/bnCatalogIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goldenCrownCatalog"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/golden_crown_catalog_menu"
+                app:layout_constraintLeft_toRightOf="@id/bnCatalog"
+                app:layout_constraintRight_toLeftOf="@id/goodwillCatalog"
+                app:layout_constraintTop_toBottomOf="@id/nigerianTiles" >
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/goldenCrownCatalogIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goodwillCatalog"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/goodwill_catalog_menu"
+                app:layout_constraintLeft_toRightOf="@id/goldenCrownCatalog"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/userAccount" >
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/goodwillCatalogIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
