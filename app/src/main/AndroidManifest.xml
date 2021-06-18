@@ -18,6 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.TileCalculatorActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.NigerianTilesActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.MyCatalogActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.GenericCatalogActivity" />
     </application>
 
 </manifest>

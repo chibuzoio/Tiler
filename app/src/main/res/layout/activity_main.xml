@@ -204,8 +204,8 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="77.777dp"
-        android:layout_height="77.777dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:background="@drawable/generic_floating_button"
         android:layout_marginBottom="25dp"
         app:layout_constraintHorizontal_bias="0.92"
