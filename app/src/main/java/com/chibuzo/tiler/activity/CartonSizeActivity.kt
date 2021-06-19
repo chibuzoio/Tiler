@@ -13,6 +13,10 @@ class CartonSizeActivity : AppCompatActivity() {
         binding = ActivityCartonSizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator";
+        binding.totalSquareMeterInput.genericInputLabel.text = "Total Square Meter";
+        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
+        binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
     }
 }
 

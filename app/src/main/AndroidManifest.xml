@@ -30,6 +30,21 @@
         <activity
             android:screenOrientation="portrait"
             android:name="com.chibuzo.tiler.activity.GenericCatalogActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.CartonSizeActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.TotalSquareMeterActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.TotalPriceActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.SquareMeterActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.PackingSizeActivity" />
     </application>
 
 </manifest>
