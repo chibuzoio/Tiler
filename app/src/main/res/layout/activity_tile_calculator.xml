@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <include
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:id="@+id/cartonSizeMenu"
+        layout="@layout/include_generic_menu_item"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/cartonSizeMenu"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:id="@+id/totalSquareMeterMenu"
+        layout="@layout/include_generic_menu_item"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/totalSquareMeterMenu"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:id="@+id/totalPriceMenu"
+        layout="@layout/include_generic_menu_item"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/totalPriceMenu"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:id="@+id/squareMeterMenu"
+        layout="@layout/include_generic_menu_item"/>
+
+    <include
+        app:layout_constraintTop_toBottomOf="@id/squareMeterMenu"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:id="@+id/packingSizeMenu"
+        layout="@layout/include_generic_menu_item"/>
+
+    <include
+        android:id="@+id/includedHeader"
+        layout="@layout/include_header"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
