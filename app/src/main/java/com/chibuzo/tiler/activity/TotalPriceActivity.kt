@@ -13,6 +13,12 @@ class TotalPriceActivity : AppCompatActivity() {
         binding = ActivityTotalPriceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.totalPriceCalculator.genericHeaderText.text = "Total Price Calculator";
+        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
+        binding.totalSquareMeterInput.genericInputLabel.text = "Total Square Meter";
+        binding.numberOfCartonsInput.genericInputLabel.text = "Number Of Cartons";
+        binding.numberOfPiecesInput.genericInputLabel.text = "Number Of Pieces";
+        binding.calculateTotalPrice.genericButtonLabel.text = "Calculate";
     }
 }
 

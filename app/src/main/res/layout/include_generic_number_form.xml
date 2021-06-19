@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/genericInputLabel"
+        android:textSize="14sp"
         android:textStyle="bold"
-        android:textSize="13.111sp"
         android:gravity="center_vertical"
         android:textColor="@color/genericBlackColor"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,8 +19,11 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
+        android:paddingHorizontal="7dp"
+        android:inputType="numberDecimal"
         android:id="@+id/genericInputEditor"
+        android:textColor="@color/genericBlackColor"
         android:background="@drawable/generic_edit_text"
         app:layout_constraintTop_toBottomOf="@id/genericInputLabel"
         android:layout_width="match_parent"
