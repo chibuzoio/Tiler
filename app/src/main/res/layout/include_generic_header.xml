@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/genericHeaderText"
-        android:textSize="23sp"
         android:textStyle="bold"
+        android:textSize="19.555sp"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/genericBlackColor"
         android:layout_width="match_parent"

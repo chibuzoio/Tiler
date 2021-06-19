@@ -11,9 +11,8 @@
     <TextView
         android:id="@+id/genericInputLabel"
         android:textStyle="bold"
-        android:textSize="11.111sp"
+        android:textSize="13.111sp"
         android:gravity="center_vertical"
-        android:layout_marginTop="11.111dp"
         android:textColor="@color/genericBlackColor"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
