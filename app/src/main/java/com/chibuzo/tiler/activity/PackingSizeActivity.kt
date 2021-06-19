@@ -2,15 +2,15 @@ package com.chibuzo.tiler.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.chibuzo.tiler.databinding.ActivityMyCatalogBinding
+import com.chibuzo.tiler.databinding.ActivityPackingSizeBinding
 
-class MyCatalogActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMyCatalogBinding
+class PackingSizeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPackingSizeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMyCatalogBinding.inflate(layoutInflater)
+        binding = ActivityPackingSizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
     }
