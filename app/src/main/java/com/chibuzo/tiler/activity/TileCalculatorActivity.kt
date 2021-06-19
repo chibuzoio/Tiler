@@ -14,11 +14,11 @@ class TileCalculatorActivity : AppCompatActivity() {
         binding = ActivityTileCalculatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.cartonSizeMenu.genericMenuText.text = "Tile Carton Size";
-        binding.totalSquareMeterMenu.genericMenuText.text = "Tile Total Square Meter";
-        binding.totalPriceMenu.genericMenuText.text = "Tile Total Price";
-        binding.squareMeterMenu.genericMenuText.text = "Tile Square Meter";
-        binding.packingSizeMenu.genericMenuText.text = "Tile Packing Size";
+        binding.cartonSizeMenu.genericMenuText.text = "Carton Size Calculator";
+        binding.totalSquareMeterMenu.genericMenuText.text = "Total Square Meter Calculator";
+        binding.totalPriceMenu.genericMenuText.text = "Total Price Calculator";
+        binding.squareMeterMenu.genericMenuText.text = "Square Meter Calculator";
+        binding.packingSizeMenu.genericMenuText.text = "Packing Size Calculator";
 
         binding.cartonSizeMenu.genericMenuLayout.setOnClickListener{
             val intent = Intent(this, CartonSizeActivity::class.java)
