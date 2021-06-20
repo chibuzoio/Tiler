@@ -36,8 +36,13 @@ class CartonSizeActivity : AppCompatActivity() {
                 val cartonSizeResult = (floor(cartonSizeFullResult)).roundToInt()
                 val remainingPieces = ((cartonSizeFullResult % 1) * numberOfPiecesValue).roundToInt()
 
-                binding.calculateCartonResult.text =
-                    "$cartonSizeResult cartons and $remainingPieces pieces!";
+                if (remainingPieces > 1) {
+                    binding.calculationResultLayout.calculationResultText.text =
+                        "$cartonSizeResult cartons and $remainingPieces pieces!";
+                } else {
+                    binding.calculationResultLayout.calculationResultText.text =
+                        "$cartonSizeResult cartons and $remainingPieces piece!";
+                }
             }
         }
     }
