@@ -13,6 +13,11 @@ class PackingSizeActivity : AppCompatActivity() {
         binding = ActivityPackingSizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.packingSizeCalculator.genericHeaderText.text = "Pieces Per Carton Calculator";
+        binding.tileLengthInput.genericInputLabel.text = "Length (in centimeter)";
+        binding.tileWidthInput.genericInputLabel.text = "Width (in centimeter)";
+        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
+        binding.calculatePackingSize.genericButtonLabel.text = "Calculate";
     }
 }
 
