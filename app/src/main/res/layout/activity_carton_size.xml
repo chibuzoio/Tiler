@@ -31,7 +31,7 @@
         layout="@layout/include_generic_number_form"/>
 
     <include
-        android:id="@+id/numberOfPiecesInput"
+        android:id="@+id/numberOfPiecesPerCartonInput"
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="11.111dp"
-        app:layout_constraintTop_toBottomOf="@id/numberOfPiecesInput"
+        app:layout_constraintTop_toBottomOf="@id/numberOfPiecesPerCartonInput"
         layout="@layout/include_generic_button"/>
 
     <include

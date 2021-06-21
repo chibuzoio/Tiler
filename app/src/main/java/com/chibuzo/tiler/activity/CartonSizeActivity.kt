@@ -18,17 +18,17 @@ class CartonSizeActivity : AppCompatActivity() {
         binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator";
         binding.totalSquareMeterInput.genericInputLabel.text = "Total Square Meter";
         binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesInput.genericInputLabel.text = "Number Of Pieces Per Carton";
+        binding.numberOfPiecesPerCartonInput.genericInputLabel.text = "Number Of Pieces Per Carton";
         binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
 
         val totalSquareMeter = binding.totalSquareMeterInput.genericInputEditor.text
         val cartonSquareMeter = binding.cartonSquareMeterInput.genericInputEditor.text
-        val numberOfPieces = binding.numberOfPiecesInput.genericInputEditor.text
+        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericInputEditor.text
 
         binding.calculateCartonSize.genericButtonLayout.setOnClickListener{
             if (totalSquareMeter.isNotBlank() &&
-                cartonSquareMeter.isNotBlank() && numberOfPieces.isNotBlank()) {
-                val numberOfPiecesValue = numberOfPieces.toString().toInt()
+                cartonSquareMeter.isNotBlank() && numberOfPiecesPerCarton.isNotBlank()) {
+                val numberOfPiecesValue = numberOfPiecesPerCarton.toString().toInt()
                 val totalSquareMeterValue = totalSquareMeter.toString().toDouble()
                 val cartonSquareMeterValue = cartonSquareMeter.toString().toDouble()
 
