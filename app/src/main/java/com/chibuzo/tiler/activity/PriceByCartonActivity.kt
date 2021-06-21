@@ -19,7 +19,7 @@ class PriceByCartonActivity : AppCompatActivity() {
         binding.pricePerCartonInput.genericInputLabel.text = "Price Per Carton";
         binding.calculatePriceByCarton.genericButtonLabel.text = "Calculate";
 
-        
+
     }
 }
 

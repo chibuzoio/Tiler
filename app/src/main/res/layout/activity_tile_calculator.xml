@@ -24,18 +24,18 @@
         app:layout_constraintTop_toBottomOf="@id/totalSquareMeterMenu"
         android:layout_height="45dp"
         android:layout_width="match_parent"
-        android:id="@+id/pricePerSquareMeterMenu"
+        android:id="@+id/priceBySquareMeterMenu"
         layout="@layout/include_generic_menu_item"/>
 
     <include
-        app:layout_constraintTop_toBottomOf="@id/pricePerSquareMeterMenu"
+        app:layout_constraintTop_toBottomOf="@id/priceBySquareMeterMenu"
         android:layout_height="45dp"
         android:layout_width="match_parent"
-        android:id="@+id/pricePerCartonMenu"
+        android:id="@+id/priceByCartonMenu"
         layout="@layout/include_generic_menu_item"/>
 
     <include
-        app:layout_constraintTop_toBottomOf="@id/pricePerCartonMenu"
+        app:layout_constraintTop_toBottomOf="@id/priceByCartonMenu"
         android:layout_height="45dp"
         android:layout_width="match_parent"
         android:id="@+id/squareMeterMenu"

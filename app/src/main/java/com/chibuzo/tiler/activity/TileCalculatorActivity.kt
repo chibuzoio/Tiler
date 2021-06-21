@@ -16,8 +16,8 @@ class TileCalculatorActivity : AppCompatActivity() {
 
         binding.cartonSizeMenu.genericMenuText.text = "Carton Size Calculator";
         binding.totalSquareMeterMenu.genericMenuText.text = "Total Square Meter Calculator";
-        binding.pricePerSquareMeterMenu.genericMenuText.text = "Price Per Square Meter Calculator";
-        binding.pricePerCartonMenu.genericMenuText.text = "Price Per Carton Calculator";
+        binding.pricePerSquareMeterMenu.genericMenuText.text = "Price By Square Meter Calculator";
+        binding.pricePerCartonMenu.genericMenuText.text = "Price By Carton Calculator";
         binding.squareMeterMenu.genericMenuText.text = "Square Meter Calculator";
         binding.packingSizeMenu.genericMenuText.text = "Packing Size Calculator";
 
