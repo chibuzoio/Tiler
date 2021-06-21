@@ -15,7 +15,7 @@
         layout="@layout/include_generic_header"/>
 
     <include
-        android:id="@+id/tileLengthInput"
+        android:id="@+id/tileWidthInput"
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,11 +23,11 @@
         layout="@layout/include_generic_number_form"/>
 
     <include
-        android:id="@+id/tileWidthInput"
+        android:id="@+id/tileLengthInput"
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tileLengthInput"
+        app:layout_constraintTop_toBottomOf="@id/tileWidthInput"
         layout="@layout/include_generic_number_form"/>
 
     <include
@@ -35,7 +35,7 @@
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tileWidthInput"
+        app:layout_constraintTop_toBottomOf="@id/tileLengthInput"
         layout="@layout/include_generic_number_form"/>
 
     <include
@@ -46,6 +46,15 @@
         android:layout_marginHorizontal="11.111dp"
         app:layout_constraintTop_toBottomOf="@id/cartonSquareMeterInput"
         layout="@layout/include_generic_button"/>
+
+    <include
+        android:id="@+id/calculationResultLayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="17.555dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="11.111dp"
+        app:layout_constraintTop_toBottomOf="@id/calculatePackingSize"
+        layout="@layout/include_calculation_result"/>
 
     <include
         android:id="@+id/includedHeader"

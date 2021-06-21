@@ -3,6 +3,8 @@ package com.chibuzo.tiler.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.chibuzo.tiler.databinding.ActivitySquareMeterBinding
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class SquareMeterActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySquareMeterBinding
@@ -26,7 +28,17 @@ class SquareMeterActivity : AppCompatActivity() {
         binding.calculateSquareMeter.genericButtonLayout.setOnClickListener {
             if (numberOfPiecesPerCarton.isNotBlank() &&
                 tileWidth.isNotBlank() && tileLength.isNotBlank()) {
-                
+                val tileWidthValue = tileWidth.toString().toDouble().div(100)
+                val tileLengthValue = tileLength.toString().toDouble().div(100)
+                val numberOfPiecesPerCartonValue = numberOfPiecesPerCarton.toString().toInt()
+
+                val tileSquareMeterResult =
+                    tileWidthValue.times(tileLengthValue).times(numberOfPiecesPerCartonValue)
+                val roundedSquareMeter =
+                    BigDecimal(tileSquareMeterResult).setScale(2, RoundingMode.HALF_EVEN)
+
+                binding.calculationResultLayout.calculationResultText.text =
+                    "$roundedSquareMeter Square Meter"
             }
         }
     }
