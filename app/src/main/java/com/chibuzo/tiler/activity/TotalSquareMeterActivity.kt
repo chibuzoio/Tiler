@@ -3,6 +3,8 @@ package com.chibuzo.tiler.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.chibuzo.tiler.databinding.ActivityTotalSquareMeterBinding
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 class TotalSquareMeterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTotalSquareMeterBinding
@@ -17,7 +19,30 @@ class TotalSquareMeterActivity : AppCompatActivity() {
         binding.numberOfCartonsInput.genericInputLabel.text = "Number Of Cartons";
         binding.numberOfPiecesInput.genericInputLabel.text = "Number Of Pieces";
         binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
-        binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
+        binding.numberOfPiecesPerCarton.genericInputLabel.text = "Number Of Pieces Per Carton"
+        binding.calculateTotalSquareMeter.genericButtonLabel.text = "Calculate";
+
+        val numberOfPieces = binding.numberOfPiecesInput.genericInputEditor.text
+        val numberOfCartons = binding.numberOfCartonsInput.genericInputEditor.text
+        val piecesPerCarton = binding.numberOfPiecesPerCarton.genericInputEditor.text
+        val cartonSquareMeter = binding.cartonSquareMeterInput.genericInputEditor.text
+
+        binding.calculateTotalSquareMeter.genericButtonLayout.setOnClickListener {
+            if (numberOfPieces.isNotBlank() && numberOfCartons.isNotBlank() &&
+                cartonSquareMeter.isNotBlank() && piecesPerCarton.isNotBlank()) {
+                val numberOfCartonsValue = numberOfCartons.toString().toInt()
+                val piecesPerCartonValue = piecesPerCarton.toString().toInt()
+                val numberOfPiecesValue = numberOfPieces.toString().toDouble()
+                val cartonSquareMeterValue = cartonSquareMeter.toString().toDouble()
+
+                val totalSquareMeterWhole: Double = numberOfCartonsValue.times(cartonSquareMeterValue)
+                val totalSquareMeterDecimal: Double = numberOfPiecesValue.div(piecesPerCartonValue)
+                val totalSquareMeterResult = totalSquareMeterWhole.plus(totalSquareMeterDecimal)
+
+                binding.calculationResultLayout.calculationResultText.text =
+                    "$totalSquareMeterResult Square Meter"
+            }
+        }
     }
 }
 

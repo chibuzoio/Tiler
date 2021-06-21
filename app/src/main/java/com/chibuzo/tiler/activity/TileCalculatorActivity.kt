@@ -16,7 +16,8 @@ class TileCalculatorActivity : AppCompatActivity() {
 
         binding.cartonSizeMenu.genericMenuText.text = "Carton Size Calculator";
         binding.totalSquareMeterMenu.genericMenuText.text = "Total Square Meter Calculator";
-        binding.totalPriceMenu.genericMenuText.text = "Total Price Calculator";
+        binding.pricePerSquareMeterMenu.genericMenuText.text = "Price Per Square Meter Calculator";
+        binding.pricePerCartonMenu.genericMenuText.text = "Price Per Carton Calculator";
         binding.squareMeterMenu.genericMenuText.text = "Square Meter Calculator";
         binding.packingSizeMenu.genericMenuText.text = "Packing Size Calculator";
 
@@ -30,8 +31,13 @@ class TileCalculatorActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.totalPriceMenu.genericMenuLayout.setOnClickListener{
-            val intent = Intent(this, TotalPriceActivity::class.java)
+        binding.pricePerSquareMeterMenu.genericMenuLayout.setOnClickListener{
+            val intent = Intent(this, PriceBySquareMeterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.pricePerCartonMenu.genericMenuLayout.setOnClickListener{
+            val intent = Intent(this, PriceByCartonActivity::class.java)
             startActivity(intent)
         }
 

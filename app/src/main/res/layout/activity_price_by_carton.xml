@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <include
         android:layout_marginTop="65dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/totalSquareMeterCalculator"
+        android:id="@+id/priceByCartonCalculator"
         layout="@layout/include_generic_header"/>
 
     <include
@@ -19,7 +19,7 @@
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/totalSquareMeterCalculator"
+        app:layout_constraintTop_toBottomOf="@id/priceByCartonCalculator"
         layout="@layout/include_generic_number_form"/>
 
     <include
@@ -31,7 +31,7 @@
         layout="@layout/include_generic_number_form"/>
 
     <include
-        android:id="@+id/cartonSquareMeterInput"
+        android:id="@+id/pricePerCartonInput"
         android:layout_marginTop="15.333dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,20 +39,12 @@
         layout="@layout/include_generic_number_form"/>
 
     <include
-        android:id="@+id/numberOfPiecesPerCarton"
-        android:layout_marginTop="15.333dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cartonSquareMeterInput"
-        layout="@layout/include_generic_number_form"/>
-
-    <include
-        android:id="@+id/calculateTotalSquareMeter"
+        android:id="@+id/calculatePriceByCarton"
         android:layout_height="41dp"
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="11.111dp"
-        app:layout_constraintTop_toBottomOf="@id/numberOfPiecesPerCarton"
+        app:layout_constraintTop_toBottomOf="@id/pricePerCartonInput"
         layout="@layout/include_generic_button"/>
 
     <include
@@ -61,7 +53,7 @@
         android:layout_marginTop="17.555dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="11.111dp"
-        app:layout_constraintTop_toBottomOf="@id/calculateTotalSquareMeter"
+        app:layout_constraintTop_toBottomOf="@id/calculatePriceByCarton"
         layout="@layout/include_calculation_result"/>
 
     <include
