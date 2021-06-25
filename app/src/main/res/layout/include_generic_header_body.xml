@@ -8,10 +8,9 @@
 
     <TextView
         android:id="@+id/genericHeader"
+        android:textSize="14dp"
         android:textStyle="bold"
-        android:textSize="15.333dp"
         android:layout_marginTop="5dp"
-        android:text="Header Should be here"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/genericBlackColor"
         android:layout_width="match_parent"
@@ -19,9 +18,8 @@
 
     <TextView
         android:id="@+id/genericBody"
-        android:textSize="15.333dp"
+        android:textSize="14dp"
         android:layout_marginTop="3dp"
-        android:text="Body should be here"
         app:layout_constraintTop_toBottomOf="@id/genericHeader"
         android:textColor="@color/genericBlackColor"
         android:layout_width="match_parent"

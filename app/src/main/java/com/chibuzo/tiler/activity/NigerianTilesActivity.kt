@@ -25,11 +25,11 @@ class NigerianTilesActivity : AppCompatActivity() {
 
         val nigerianTiles = ArrayList<NigerianTilesModel>()
 
-        nigerianTiles.add(NigerianTilesModel("", "30 x 30", "", ""))
+        nigerianTiles.add(NigerianTilesModel("", "30 x 30", "17", "1.53"))
         nigerianTiles.add(NigerianTilesModel("", "25 x 40", "15", "1.5"))
-        nigerianTiles.add(NigerianTilesModel("", "25 x 50", "", ""))
+        nigerianTiles.add(NigerianTilesModel("", "25 x 50", "12", "1.5"))
         nigerianTiles.add(NigerianTilesModel("", "40 x 40", "12", "1.92"))
-        nigerianTiles.add(NigerianTilesModel("", "30 x 60", "", ""))
+        nigerianTiles.add(NigerianTilesModel("", "30 x 60", "9", "1.62"))
         nigerianTiles.add(NigerianTilesModel("", "60 x 60", "4", "1.44"))
 
         val nigerianTilesAdapter = NigerianTilesAdapter(nigerianTiles)
