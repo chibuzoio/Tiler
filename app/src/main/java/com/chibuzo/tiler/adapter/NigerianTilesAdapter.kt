@@ -5,29 +5,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chibuzo.tiler.R
+import com.chibuzo.tiler.databinding.RecyclerNigerianTilesBinding
 import com.chibuzo.tiler.model.NigerianTilesModel
 
 class NigerianTilesAdapter(val nigerianTiles: ArrayList<NigerianTilesModel>) :
     RecyclerView.Adapter<NigerianTilesAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NigerianTilesAdapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_nigerian_tiles, parent, false)
-        return MyViewHolder(view)
+        val binding = RecyclerNigerianTilesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
-    //this method is binding the data on the list
     override fun onBindViewHolder(holder: NigerianTilesAdapter.MyViewHolder, position: Int) {
-
+//        holder.binding.nigerianTilesImage.drawable
     }
 
-    //this method is giving the size of the list
     override fun getItemCount(): Int {
         return nigerianTiles.size
     }
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class MyViewHolder(val binding: RecyclerNigerianTilesBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }
 
 
