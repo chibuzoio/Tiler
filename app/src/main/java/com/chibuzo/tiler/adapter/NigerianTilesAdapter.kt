@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.chibuzo.tiler.R
 import com.chibuzo.tiler.databinding.RecyclerNigerianTilesBinding
 import com.chibuzo.tiler.model.NigerianTilesModel
 
-class NigerianTilesAdapter(val nigerianTiles: ArrayList<NigerianTilesModel>) :
+class NigerianTilesAdapter(private val nigerianTiles: ArrayList<NigerianTilesModel>) :
     RecyclerView.Adapter<NigerianTilesAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NigerianTilesAdapter.MyViewHolder {
@@ -17,7 +18,12 @@ class NigerianTilesAdapter(val nigerianTiles: ArrayList<NigerianTilesModel>) :
     }
 
     override fun onBindViewHolder(holder: NigerianTilesAdapter.MyViewHolder, position: Int) {
-//        holder.binding.nigerianTilesImage.drawable
+        holder.binding.nigerianTilesDimension.genericHeader.text = "Tile Dimension"
+        holder.binding.nigerianTilesPackingSize.genericHeader.text = "Packing Size Per Carton"
+        holder.binding.nigerianTilesSquareMeter.genericHeader.text = "Square Meter Per Carton"
+
+        Glide.with(holder.itemView).load(nigerianTiles[position].imageName)
+            .into(holder.binding.nigerianTilesImage)
     }
 
     override fun getItemCount(): Int {
