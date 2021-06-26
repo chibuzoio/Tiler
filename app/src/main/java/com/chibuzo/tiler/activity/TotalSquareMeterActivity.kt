@@ -16,16 +16,16 @@ class TotalSquareMeterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.totalSquareMeterCalculator.genericHeaderText.text = "Total Square Meter Calculator";
-        binding.numberOfCartonsInput.genericInputLabel.text = "Number Of Cartons";
-        binding.numberOfPiecesInput.genericInputLabel.text = "Number Of Pieces";
-        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesPerCarton.genericInputLabel.text = "Number Of Pieces Per Carton"
+        binding.numberOfCartonsInput.genericNumberInputLabel.text = "Number Of Cartons";
+        binding.numberOfPiecesInput.genericNumberInputLabel.text = "Number Of Pieces";
+        binding.cartonSquareMeterInput.genericNumberInputLabel.text = "Square Meter Per Carton";
+        binding.numberOfPiecesPerCarton.genericNumberInputLabel.text = "Number Of Pieces Per Carton"
         binding.calculateTotalSquareMeter.genericButtonLabel.text = "Calculate";
 
-        val numberOfPieces = binding.numberOfPiecesInput.genericInputEditor.text
-        val numberOfCartons = binding.numberOfCartonsInput.genericInputEditor.text
-        val piecesPerCarton = binding.numberOfPiecesPerCarton.genericInputEditor.text
-        val cartonSquareMeter = binding.cartonSquareMeterInput.genericInputEditor.text
+        val numberOfPieces = binding.numberOfPiecesInput.genericNumberInputEditor.text
+        val numberOfCartons = binding.numberOfCartonsInput.genericNumberInputEditor.text
+        val piecesPerCarton = binding.numberOfPiecesPerCarton.genericNumberInputEditor.text
+        val cartonSquareMeter = binding.cartonSquareMeterInput.genericNumberInputEditor.text
 
         binding.calculateTotalSquareMeter.genericButtonLayout.setOnClickListener {
             if (numberOfPieces.isNotBlank() && numberOfCartons.isNotBlank() &&

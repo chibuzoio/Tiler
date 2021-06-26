@@ -16,16 +16,16 @@ class PriceByCartonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.priceByCartonCalculator.genericHeaderText.text = "Price By Carton Calculator";
-        binding.numberOfCartonsInput.genericInputLabel.text = "Number Of Cartons";
-        binding.numberOfPiecesInput.genericInputLabel.text = "Number Of Pieces";
-        binding.numberOfPiecesPerCartonInput.genericInputLabel.text = "Number Of Pieces Per Carton";
-        binding.pricePerCartonInput.genericInputLabel.text = "Price Per Carton";
+        binding.numberOfCartonsInput.genericNumberInputLabel.text = "Number Of Cartons";
+        binding.numberOfPiecesInput.genericNumberInputLabel.text = "Number Of Pieces";
+        binding.numberOfPiecesPerCartonInput.genericNumberInputLabel.text = "Number Of Pieces Per Carton";
+        binding.pricePerCartonInput.genericNumberInputLabel.text = "Price Per Carton";
         binding.calculatePriceByCarton.genericButtonLabel.text = "Calculate";
 
-        val numberOfCartons = binding.numberOfCartonsInput.genericInputEditor.text
-        val numberOfPieces = binding.numberOfPiecesInput.genericInputEditor.text
-        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericInputEditor.text
-        val pricePerCarton = binding.pricePerCartonInput.genericInputEditor.text
+        val numberOfCartons = binding.numberOfCartonsInput.genericNumberInputEditor.text
+        val numberOfPieces = binding.numberOfPiecesInput.genericNumberInputEditor.text
+        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberInputEditor.text
+        val pricePerCarton = binding.pricePerCartonInput.genericNumberInputEditor.text
 
         binding.calculatePriceByCarton.genericButtonLayout.setOnClickListener {
             if (numberOfCartons.isNotBlank() && numberOfPieces.isNotBlank() &&

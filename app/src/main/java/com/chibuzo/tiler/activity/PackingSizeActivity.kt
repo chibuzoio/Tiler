@@ -15,14 +15,14 @@ class PackingSizeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.packingSizeCalculator.genericHeaderText.text = "Pieces Per Carton Calculator";
-        binding.tileLengthInput.genericInputLabel.text = "Length (in centimeter)";
-        binding.tileWidthInput.genericInputLabel.text = "Width (in centimeter)";
-        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
+        binding.tileLengthInput.genericNumberInputLabel.text = "Length (in centimeter)";
+        binding.tileWidthInput.genericNumberInputLabel.text = "Width (in centimeter)";
+        binding.cartonSquareMeterInput.genericNumberInputLabel.text = "Square Meter Per Carton";
         binding.calculatePackingSize.genericButtonLabel.text = "Calculate";
 
-        val tileWidth = binding.tileWidthInput.genericInputEditor.text
-        val tileLength = binding.tileLengthInput.genericInputEditor.text
-        val cartonSquareMeter = binding.cartonSquareMeterInput.genericInputEditor.text
+        val tileWidth = binding.tileWidthInput.genericNumberInputEditor.text
+        val tileLength = binding.tileLengthInput.genericNumberInputEditor.text
+        val cartonSquareMeter = binding.cartonSquareMeterInput.genericNumberInputEditor.text
 
         binding.calculatePackingSize.genericButtonLayout.setOnClickListener {
             if (cartonSquareMeter.isNotBlank() &&

@@ -16,14 +16,14 @@ class CartonSizeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator";
-        binding.totalSquareMeterInput.genericInputLabel.text = "Total Square Meter";
-        binding.cartonSquareMeterInput.genericInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesPerCartonInput.genericInputLabel.text = "Number Of Pieces Per Carton";
+        binding.totalSquareMeterInput.genericNumberInputLabel.text = "Total Square Meter";
+        binding.cartonSquareMeterInput.genericNumberInputLabel.text = "Square Meter Per Carton";
+        binding.numberOfPiecesPerCartonInput.genericNumberInputLabel.text = "Number Of Pieces Per Carton";
         binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
 
-        val totalSquareMeter = binding.totalSquareMeterInput.genericInputEditor.text
-        val cartonSquareMeter = binding.cartonSquareMeterInput.genericInputEditor.text
-        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericInputEditor.text
+        val totalSquareMeter = binding.totalSquareMeterInput.genericNumberInputEditor.text
+        val cartonSquareMeter = binding.cartonSquareMeterInput.genericNumberInputEditor.text
+        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberInputEditor.text
 
         binding.calculateCartonSize.genericButtonLayout.setOnClickListener{
             if (totalSquareMeter.isNotBlank() &&
