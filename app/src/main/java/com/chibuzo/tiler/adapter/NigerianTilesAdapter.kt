@@ -2,6 +2,7 @@ package com.chibuzo.tiler.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chibuzo.tiler.databinding.RecyclerNigerianTilesBinding
@@ -20,7 +21,8 @@ class NigerianTilesAdapter(private val nigerianTiles: ArrayList<NigerianTilesMod
         holder.binding.nigerianTilesPackingSize.genericHeader.text = "Packing Size Per Carton"
         holder.binding.nigerianTilesSquareMeter.genericHeader.text = "Square Meter Per Carton"
 
-        Glide.with(holder.itemView).load(nigerianTiles[position].imageName)
+        Glide.with(holder.itemView)
+            .load(ContextCompat.getDrawable(holder.itemView.context, nigerianTiles[position].imageId))
             .into(holder.binding.nigerianTilesImage)
 
         holder.binding.nigerianTilesSquareMeter.genericBody.text = nigerianTiles[position].squareMeter
