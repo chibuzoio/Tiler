@@ -200,10 +200,9 @@
         android:id="@+id/includedHeader"
         layout="@layout/include_header"/>
 
-    <!--Add floating menu layout here-->
-
     <LinearLayout
         android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:background="@drawable/generic_floating_button"
@@ -212,6 +211,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" >
+
+        <ImageView
+            android:src="@drawable/ic_addition_111"
+            android:layout_width="43dp"
+            android:layout_height="43dp"/>
 
     </LinearLayout>
 
