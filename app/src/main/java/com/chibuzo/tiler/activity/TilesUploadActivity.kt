@@ -30,6 +30,15 @@ class TilesUploadActivity : AppCompatActivity() {
 
         binding.uploadPictureButton.genericButtonLabel.text = "Upload Picture"
         binding.takePictureButton.genericButtonLabel.text = "Take Picture"
+        binding.tileNameInput.genericTextInputLabel.text = "Tile Name"
+        binding.dimensionInputLabel.text = "Dimension"
+        binding.squareMeterInput.genericNumberInputLabel.text = "Square Meter Per Carton"
+        binding.packingSizeInput.genericNumberInputLabel.text = "Packing Size Per Carton"
+        binding.marketPriceInput.genericNumberInputLabel.text = "Market Price"
+        binding.sellingPriceInput.genericNumberInputLabel.text = "Selling Price"
+        binding.warehouseNameInput.genericTextInputLabel.text = "Warehouse"
+        binding.originCountryInput.genericTextInputLabel.text = "Made In"
+        binding.uploadCustomTile.genericButtonLabel.text = "Save Tile"
     }
 }
 
