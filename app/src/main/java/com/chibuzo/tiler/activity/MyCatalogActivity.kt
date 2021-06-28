@@ -1,5 +1,6 @@
 package com.chibuzo.tiler.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -32,6 +33,11 @@ class MyCatalogActivity : AppCompatActivity() {
         myCatalogTiles.add(MyCatalogModel(R.drawable.tile60x60, "60 x 60 White"))
 
         binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles)
+
+        binding.addCatalogTilesButton.setOnClickListener {
+            val intent = Intent(this, TilesUploadActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 

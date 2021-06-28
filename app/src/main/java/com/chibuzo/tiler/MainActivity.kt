@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.chibuzo.tiler.activity.GenericCatalogActivity
-import com.chibuzo.tiler.activity.MyCatalogActivity
-import com.chibuzo.tiler.activity.NigerianTilesActivity
-import com.chibuzo.tiler.activity.TileCalculatorActivity
+import com.chibuzo.tiler.activity.*
 import com.chibuzo.tiler.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +19,11 @@ class MainActivity : AppCompatActivity() {
             {
                 binding = ActivityMainBinding.inflate(layoutInflater)
                 setContentView(binding.root)
+
+                binding.addCatalogTilesButton.setOnClickListener {
+                    val intent = Intent(this, TilesUploadActivity::class.java)
+                    startActivity(intent)
+                }
 
                 binding.tileCalculator.setOnClickListener {
                     val intent = Intent(this, TileCalculatorActivity::class.java)
