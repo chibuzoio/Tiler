@@ -48,6 +48,9 @@
         <activity
             android:screenOrientation="portrait"
             android:name="com.chibuzo.tiler.activity.PackingSizeActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.TilesUploadActivity" />
     </application>
 
 </manifest>
