@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/priceBySquareMeterCalculator"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/pricePerSquareMeterInput"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/totalSquareMeterInput"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/calculatePriceBySquareMeter"

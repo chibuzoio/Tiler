@@ -18,14 +18,14 @@ class PriceBySquareMeterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.priceBySquareMeterCalculator.genericHeaderText.text = "Price By Square Meter Calculator";
-        binding.totalSquareMeterInput.genericNumberInputLabel.text = "Total Square Meter";
-        binding.pricePerSquareMeterInput.genericNumberInputLabel.text = "Price Per Square Meter";
+        binding.totalSquareMeterInput.genericNumberDecimalInputLabel.text = "Total Square Meter";
+        binding.pricePerSquareMeterInput.genericNumberDecimalInputLabel.text = "Price Per Square Meter";
         binding.calculatePriceBySquareMeter.genericButtonLabel.text = "Calculate";
 
-        val totalSquareMeter = binding.totalSquareMeterInput.genericNumberInputEditor.text
-        val pricePerSquareMeter = binding.pricePerSquareMeterInput.genericNumberInputEditor.text
+        val totalSquareMeter = binding.totalSquareMeterInput.genericNumberDecimalInputEditor.text
+        val pricePerSquareMeter = binding.pricePerSquareMeterInput.genericNumberDecimalInputEditor.text
 
-        binding.totalSquareMeterInput.genericNumberInputEditor.addTextChangedListener(object : TextWatcher {
+        binding.totalSquareMeterInput.genericNumberDecimalInputEditor.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(input: CharSequence, start: Int, before: Int, count: Int) {
 
             }

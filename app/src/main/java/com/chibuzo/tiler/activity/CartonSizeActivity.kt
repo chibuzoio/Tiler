@@ -16,14 +16,14 @@ class CartonSizeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator";
-        binding.totalSquareMeterInput.genericNumberInputLabel.text = "Total Square Meter";
-        binding.cartonSquareMeterInput.genericNumberInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesPerCartonInput.genericNumberInputLabel.text = "Number Of Pieces Per Carton";
+        binding.totalSquareMeterInput.genericNumberDecimalInputLabel.text = "Total Square Meter";
+        binding.cartonSquareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton";
+        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Number Of Pieces Per Carton";
         binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
 
-        val totalSquareMeter = binding.totalSquareMeterInput.genericNumberInputEditor.text
-        val cartonSquareMeter = binding.cartonSquareMeterInput.genericNumberInputEditor.text
-        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberInputEditor.text
+        val totalSquareMeter = binding.totalSquareMeterInput.genericNumberDecimalInputEditor.text
+        val cartonSquareMeter = binding.cartonSquareMeterInput.genericNumberDecimalInputEditor.text
+        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputEditor.text
 
         binding.calculateCartonSize.genericButtonLayout.setOnClickListener{
             if (totalSquareMeter.isNotBlank() &&

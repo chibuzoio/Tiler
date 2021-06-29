@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:paddingHorizontal="11.111dp"
-    android:id="@+id/genericNumberFormLayout"
+    android:id="@+id/genericNumberDecimalFormLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/genericNumberInputLabel"
+        android:id="@+id/genericNumberDecimalInputLabel"
         android:textSize="14sp"
         android:textStyle="bold"
         android:gravity="center_vertical"
@@ -19,13 +19,13 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:inputType="number"
         android:layout_marginTop="3dp"
         android:paddingHorizontal="7dp"
-        android:id="@+id/genericNumberInputEditor"
+        android:inputType="numberDecimal"
+        android:id="@+id/genericNumberDecimalInputEditor"
         android:textColor="@color/genericBlackColor"
         android:background="@drawable/generic_edit_text"
-        app:layout_constraintTop_toBottomOf="@id/genericNumberInputLabel"
+        app:layout_constraintTop_toBottomOf="@id/genericNumberDecimalInputLabel"
         android:layout_width="match_parent"
         android:layout_height="37.555dp"/>
 

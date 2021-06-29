@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/dimensionFormLayout"
-                layout="@layout/include_generic_number_form"/>
+                layout="@layout/include_generic_number_decimal_form"/>
 
             <include
                 android:id="@+id/packingSizeInput"
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/squareMeterInput"
-                layout="@layout/include_generic_number_form"/>
+                layout="@layout/include_generic_number_decimal_form"/>
 
             <include
                 android:id="@+id/marketPriceInput"
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/packingSizeInput"
-                layout="@layout/include_generic_number_form"/>
+                layout="@layout/include_generic_number_decimal_form"/>
 
             <include
                 android:id="@+id/sellingPriceInput"
@@ -143,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/marketPriceInput"
-                layout="@layout/include_generic_number_form"/>
+                layout="@layout/include_generic_number_decimal_form"/>
 
             <include
                 android:id="@+id/warehouseNameInput"
@@ -154,11 +154,19 @@
                 layout="@layout/include_generic_text_form"/>
 
             <include
-                android:id="@+id/originCountryInput"
+                android:id="@+id/phoneNumberInput"
                 android:layout_marginTop="15.333dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/warehouseNameInput"
+                layout="@layout/include_generic_number_form"/>
+
+            <include
+                android:id="@+id/originCountryInput"
+                android:layout_marginTop="15.333dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/phoneNumberInput"
                 layout="@layout/include_generic_text_form"/>
 
             <include

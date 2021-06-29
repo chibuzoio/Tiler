@@ -16,16 +16,16 @@ class PriceByCartonActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.priceByCartonCalculator.genericHeaderText.text = "Price By Carton Calculator";
-        binding.numberOfCartonsInput.genericNumberInputLabel.text = "Number Of Cartons";
-        binding.numberOfPiecesInput.genericNumberInputLabel.text = "Number Of Pieces";
-        binding.numberOfPiecesPerCartonInput.genericNumberInputLabel.text = "Number Of Pieces Per Carton";
-        binding.pricePerCartonInput.genericNumberInputLabel.text = "Price Per Carton";
+        binding.numberOfCartonsInput.genericNumberDecimalInputLabel.text = "Number Of Cartons";
+        binding.numberOfPiecesInput.genericNumberDecimalInputLabel.text = "Number Of Pieces";
+        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Number Of Pieces Per Carton";
+        binding.pricePerCartonInput.genericNumberDecimalInputLabel.text = "Price Per Carton";
         binding.calculatePriceByCarton.genericButtonLabel.text = "Calculate";
 
-        val numberOfCartons = binding.numberOfCartonsInput.genericNumberInputEditor.text
-        val numberOfPieces = binding.numberOfPiecesInput.genericNumberInputEditor.text
-        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberInputEditor.text
-        val pricePerCarton = binding.pricePerCartonInput.genericNumberInputEditor.text
+        val numberOfCartons = binding.numberOfCartonsInput.genericNumberDecimalInputEditor.text
+        val numberOfPieces = binding.numberOfPiecesInput.genericNumberDecimalInputEditor.text
+        val numberOfPiecesPerCarton = binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputEditor.text
+        val pricePerCarton = binding.pricePerCartonInput.genericNumberDecimalInputEditor.text
 
         binding.calculatePriceByCarton.genericButtonLayout.setOnClickListener {
             if (numberOfCartons.isNotBlank() && numberOfPieces.isNotBlank() &&

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/totalSquareMeterCalculator"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/numberOfPiecesInput"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/numberOfCartonsInput"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/cartonSquareMeterInput"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/numberOfPiecesInput"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/numberOfPiecesPerCarton"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/cartonSquareMeterInput"
-        layout="@layout/include_generic_number_form"/>
+        layout="@layout/include_generic_number_decimal_form"/>
 
     <include
         android:id="@+id/calculateTotalSquareMeter"
