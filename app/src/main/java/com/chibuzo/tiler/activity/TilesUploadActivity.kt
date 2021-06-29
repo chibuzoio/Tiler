@@ -1,6 +1,10 @@
 package com.chibuzo.tiler.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -39,7 +43,28 @@ class TilesUploadActivity : AppCompatActivity() {
         binding.warehouseNameInput.genericTextInputLabel.text = "Warehouse"
         binding.originCountryInput.genericTextInputLabel.text = "Made In"
         binding.uploadCustomTile.genericButtonLabel.text = "Save Tile"
+
+        binding.takePictureButton.genericButtonLayout.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            resultLauncher.launch(intent)
+        }
+
+        binding.uploadPictureButton.genericButtonLayout.setOnClickListener {
+
+        }
+
+        binding.uploadCustomTile.genericButtonLayout.setOnClickListener {
+
+        }
     }
+
+    var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+
+            }
+        }
 }
 
 
