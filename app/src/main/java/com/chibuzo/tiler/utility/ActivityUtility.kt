@@ -6,16 +6,72 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
-import java.io.File
-import java.io.FileInputStream
-import java.io.IOException
-import java.io.InputStream
+import android.util.Base64
+import java.io.*
 
 
 class ActivityUtility {
 
     companion object {
+        fun genericBitmapSize(bitmap: Bitmap): Int {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                return bitmap.allocationByteCount;
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1) {
+                return bitmap.byteCount;
+            } else {
+                return bitmap.rowBytes * bitmap.height;
+            }
+        }
+
+        fun encodeUploadImage(bitmap: Bitmap): String {
+            val byteArrayOutputStreamObject = ByteArrayOutputStream()
+            val currentBitmapSize: Int = genericBitmapSize(bitmap)
+
+            return if (currentBitmapSize > 174747195) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 109216997) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 65530198) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 43686798) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 32765100) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 21843400) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 16062577) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 11838951) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else if (currentBitmapSize > 7530000) {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            } else {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject)
+                val byteArrayVar = byteArrayOutputStreamObject.toByteArray()
+                Base64.encodeToString(byteArrayVar, Base64.DEFAULT)
+            }
+        }
+
         private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
             var inSampleSize = 1;
             val width = options.outWidth
