@@ -2,20 +2,15 @@ package com.chibuzo.tiler.activity
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -25,7 +20,6 @@ import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.R
 import com.chibuzo.tiler.databinding.ActivityTilesUploadBinding
-import com.chibuzo.tiler.utility.ActivityUtility
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -111,7 +105,6 @@ class TilesUploadActivity : AppCompatActivity() {
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        // Create an image file name
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val imageFileName = "JPEG_" + timeStamp + "_"
         val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -121,7 +114,6 @@ class TilesUploadActivity : AppCompatActivity() {
             storageDir      /* directory */
         )
 
-        // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.absolutePath
         return image
     }
@@ -144,110 +136,6 @@ class TilesUploadActivity : AppCompatActivity() {
             displayMessage(baseContext, "Request cancelled or something went wrong.")
         }
     }
-
-/*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
-            lateinit var bitmap: Bitmap
-
-            Log.e("imageUriValue", "imageUriValue here is $imageUri")
-
-            try {
-                bitmap = ActivityUtility.decodeSampledBitmapFromUri(this,
-                    imageUri, 333, 333)
-
-                Glide.with(this)
-                    .load(bitmap)
-                    .transform(FitCenter(), RoundedCorners(11))
-                    .into(binding.tilesUploadImage)
-
-                updatePostImage = ActivityUtility.encodeUploadImage(bitmap)
-            } catch (exception: Exception) {
-                exception.printStackTrace()
-
-                Log.e("firstException", "Exception here is $exception")
-
-                try {
-                    bitmap = ActivityUtility.getHigherVersionBitmapImage(this,
-                        imageUri, 333, 333)
-
-                    Glide.with(this)
-                        .load(bitmap)
-                        .transform(FitCenter(), RoundedCorners(11))
-                        .into(binding.tilesUploadImage)
-
-                    updatePostImage = ActivityUtility.encodeUploadImage(bitmap)
-                } catch (localException: Exception) {
-                    localException.printStackTrace()
-
-                    Log.e("secondException", "Exception here is $exception")
-                }
-            }
-        }
-    }
-*/
-
-    private fun startImageCapture() {
-        val values = ContentValues()
-        values.put(MediaStore.Images.Media.TITLE, "New Picture")
-        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
-        imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)!!
-
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        resultLauncher.launch(intent)
-//        startActivityForResult(intent, REQUEST_CODE)
-    }
-
-    private var resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                lateinit var bitmap: Bitmap
-                val data: Intent? = result.data
-                val imageData: Bitmap = data?.extras?.get("data") as Bitmap
-
-                Glide.with(this)
-                    .load(imageData)
-                    .transform(FitCenter(), RoundedCorners(11))
-                    .into(binding.tilesUploadImage)
-
-/*
-                try {
-                    bitmap = ActivityUtility.decodeSampledBitmapFromUri(this,
-                        imageUri, 333, 333)
-
-                    Glide.with(this)
-                        .load(bitmap)
-                        .transform(FitCenter(), RoundedCorners(11))
-                        .into(binding.tilesUploadImage)
-
-                    updatePostImage = ActivityUtility.encodeUploadImage(bitmap)
-                } catch (exception: Exception) {
-                    exception.printStackTrace()
-
-                    Log.e("firstException", "Exception here is $exception")
-
-                    try {
-                        bitmap = ActivityUtility.getHigherVersionBitmapImage(this,
-                            imageUri, 333, 333)
-
-                        Glide.with(this)
-                            .load(bitmap)
-                            .transform(FitCenter(), RoundedCorners(11))
-                            .into(binding.tilesUploadImage)
-
-                        updatePostImage = ActivityUtility.encodeUploadImage(bitmap)
-                    } catch (localException: Exception) {
-                        localException.printStackTrace()
-
-                        Log.e("secondException", "Exception here is $exception")
-                    }
-                }
-*/
-
-            }
-        }
 }
 
 
