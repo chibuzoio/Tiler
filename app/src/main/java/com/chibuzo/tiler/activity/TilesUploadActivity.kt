@@ -6,10 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -27,12 +28,11 @@ import java.util.*
 
 
 class TilesUploadActivity : AppCompatActivity() {
-    private val REQUEST_CODE: Int = 200
-    private lateinit var imageUri: Uri
-    private lateinit var updatePostImage: String
+    private val PERMISSION_CODE = 1001
     private lateinit var binding: ActivityTilesUploadBinding
     private var photoFile: File? = null
-    private val CAPTURE_IMAGE_REQUEST = 1
+    private val PICK_IMAGE_REQUEST = 200
+    private val CAPTURE_IMAGE_REQUEST = 100
     private var mCurrentPhotoPath: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,22 +59,46 @@ class TilesUploadActivity : AppCompatActivity() {
         binding.packingSizeInput.genericNumberDecimalInputLabel.text = "Packing Size Per Carton"
         binding.marketPriceInput.genericNumberDecimalInputLabel.text = "Market Price"
         binding.sellingPriceInput.genericNumberDecimalInputLabel.text = "Selling Price"
+        binding.tileAvailabilityInput.genericSwitchInputLabel.text = "Available"
         binding.phoneNumberInput.genericNumberInputLabel.text = "Phone Number"
         binding.warehouseNameInput.genericTextInputLabel.text = "Warehouse"
         binding.originCountryInput.genericTextInputLabel.text = "Made In"
         binding.uploadCustomTile.genericButtonLabel.text = "Save Tile"
+
+        binding.tileAvailabilityInput.genericSwitchInputEditor.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+
+            } else {
+
+            }
+        }
 
         binding.takePictureButton.genericButtonLayout.setOnClickListener {
             captureCameraImage()
         }
 
         binding.uploadPictureButton.genericButtonLayout.setOnClickListener {
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    requestPermissions(permissions, PERMISSION_CODE)
+                } else {
+                    pickImageFromGallery()
+                }
+            } else {
+                pickImageFromGallery()
+            }
         }
 
         binding.uploadCustomTile.genericButtonLayout.setOnClickListener {
 
         }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }
 
     private fun captureCameraImage() {
@@ -84,17 +108,15 @@ class TilesUploadActivity : AppCompatActivity() {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
             if (takePictureIntent.resolveActivity(packageManager) != null) {
-                // Create the File where the photo should go
                 try {
                     photoFile = createImageFile()
-                    // Continue only if the File was successfully created
+
                     if (photoFile != null) {
                         val photoURI = FileProvider.getUriForFile(this, "com.chibuzo.tiler.fileprovider", photoFile!!)
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                         startActivityForResult(takePictureIntent, CAPTURE_IMAGE_REQUEST)
                     }
                 } catch (ex: Exception) {
-                    // Error occurred while creating the File
                     displayMessage(baseContext, ex.message.toString())
                 }
             } else {
@@ -130,6 +152,11 @@ class TilesUploadActivity : AppCompatActivity() {
 
             Glide.with(this)
                 .load(myBitmap)
+                .transform(FitCenter(), RoundedCorners(11))
+                .into(binding.tilesUploadImage)
+        } else if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            Glide.with(this)
+                .load(data?.data)
                 .transform(FitCenter(), RoundedCorners(11))
                 .into(binding.tilesUploadImage)
         } else {

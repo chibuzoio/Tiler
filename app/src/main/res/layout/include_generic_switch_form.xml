@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="5"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:paddingHorizontal="11.111dp"
+    android:id="@+id/genericSwitchFormLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/genericSwitchInputLabel"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_weight="4"
+        android:gravity="center_vertical"
+        android:textColor="@color/genericBlackColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:checked="true"
+        android:layout_weight="1"
+        android:id="@+id/genericSwitchInputEditor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+

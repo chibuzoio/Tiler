@@ -170,6 +170,14 @@
                 layout="@layout/include_generic_text_form"/>
 
             <include
+                android:id="@+id/tileAvailabilityInput"
+                android:layout_marginTop="15.333dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/originCountryInput"
+                layout="@layout/include_generic_switch_form"/>
+
+            <include
                 android:id="@+id/uploadCustomTile"
                 android:layout_height="41dp"
                 android:layout_marginTop="25dp"
@@ -177,7 +185,7 @@
                 android:layout_marginBottom="55.555dp"
                 android:layout_marginHorizontal="11.111dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/originCountryInput"
+                app:layout_constraintTop_toBottomOf="@id/tileAvailabilityInput"
                 layout="@layout/include_generic_button"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

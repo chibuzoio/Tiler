@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tiler</string>
+    <string-array name="booleanString">
+        <item>False</item>
+        <item>True</item>
+    </string-array>
 </resources>
 
 
