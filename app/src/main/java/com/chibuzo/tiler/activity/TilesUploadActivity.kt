@@ -5,12 +5,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -21,14 +22,16 @@ import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.R
 import com.chibuzo.tiler.databinding.ActivityTilesUploadBinding
+import com.chibuzo.tiler.utility.ActivityUtility
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class TilesUploadActivity : AppCompatActivity() {
     private val PERMISSION_CODE = 1001
+    private var theBitmap: Bitmap? = null
+    private var tileImageString: String? = null
     private lateinit var binding: ActivityTilesUploadBinding
     private var photoFile: File? = null
     private val PICK_IMAGE_REQUEST = 200
@@ -65,6 +68,32 @@ class TilesUploadActivity : AppCompatActivity() {
         binding.originCountryInput.genericTextInputLabel.text = "Made In"
         binding.uploadCustomTile.genericButtonLabel.text = "Save Tile"
 
+        /*
+        * tileNameInput
+        * xDirectionInputEditor
+        *yDirectionInputEditor
+        *squareMeterInput
+        * packingSizeInput
+        *marketPriceInput
+        * sellingPriceInput
+        * warehouseNameInput
+        * phoneNumberInput
+        * originCountryInput
+        * tileAvailabilityInput
+        * */
+
+        val tileName = binding.tileNameInput.genericTextInputEditor.text
+        val xDirectionDimen = binding.xDirectionInputEditor.text
+        val yDirectionDimen = binding.yDirectionInputEditor.text
+        val squareMeter = binding.squareMeterInput.genericNumberDecimalInputEditor.text
+        val packingSize = binding.packingSizeInput.genericNumberDecimalInputEditor.text
+        val marketPrice = binding.marketPriceInput.genericNumberDecimalInputEditor.text
+        val sellingPrice = binding.sellingPriceInput.genericNumberDecimalInputEditor.text
+        val warehouseName = binding.warehouseNameInput.genericTextInputEditor.text
+        val phoneNumber = binding.phoneNumberInput.genericNumberInputEditor.text
+        val originCountry = binding.originCountryInput.genericTextInputEditor.text
+        val tileAvailability = binding.tileAvailabilityInput.genericSwitchInputEditor.isChecked
+
         binding.tileAvailabilityInput.genericSwitchInputEditor.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
 
@@ -91,7 +120,16 @@ class TilesUploadActivity : AppCompatActivity() {
         }
 
         binding.uploadCustomTile.genericButtonLayout.setOnClickListener {
+            tileImageString = ActivityUtility.encodeUploadImage(theBitmap!!)
 
+            if (tileImageString!!.isNotBlank() && tileName.isNotBlank()
+                && xDirectionDimen.isNotBlank() && yDirectionDimen.isNotBlank()
+                && squareMeter.isNotBlank() && packingSize.isNotBlank() && marketPrice.isNotBlank()
+                && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
+                && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
+                // post to the database
+                
+            }
         }
     }
 
@@ -148,10 +186,10 @@ class TilesUploadActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-            val myBitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath)
+            theBitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath)
 
             Glide.with(this)
-                .load(myBitmap)
+                .load(theBitmap)
                 .transform(FitCenter(), RoundedCorners(11))
                 .into(binding.tilesUploadImage)
         } else if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
@@ -159,6 +197,13 @@ class TilesUploadActivity : AppCompatActivity() {
                 .load(data?.data)
                 .transform(FitCenter(), RoundedCorners(11))
                 .into(binding.tilesUploadImage)
+
+            theBitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+                val source = ImageDecoder.createSource(contentResolver, data?.data!!)
+                ImageDecoder.decodeBitmap(source)
+            } else{
+                MediaStore.Images.Media.getBitmap(contentResolver, data?.data)
+            }
         } else {
             displayMessage(baseContext, "Request cancelled or something went wrong.")
         }
