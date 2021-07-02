@@ -19,7 +19,7 @@ class TotalSquareMeterActivity : AppCompatActivity() {
         binding.numberOfCartonsInput.genericNumberDecimalInputLabel.text = "Number Of Cartons";
         binding.numberOfPiecesInput.genericNumberDecimalInputLabel.text = "Number Of Pieces";
         binding.cartonSquareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesPerCarton.genericNumberDecimalInputLabel.text = "Number Of Pieces Per Carton"
+        binding.numberOfPiecesPerCarton.genericNumberDecimalInputLabel.text = "Packing Size"
         binding.calculateTotalSquareMeter.genericButtonLabel.text = "Calculate";
 
         val numberOfPieces = binding.numberOfPiecesInput.genericNumberDecimalInputEditor.text

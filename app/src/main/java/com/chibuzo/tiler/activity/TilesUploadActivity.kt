@@ -24,6 +24,8 @@ import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.R
 import com.chibuzo.tiler.databinding.ActivityTilesUploadBinding
+import com.chibuzo.tiler.datastore.DatabaseHandler
+import com.chibuzo.tiler.model.MyCatalogTilesModel
 import com.chibuzo.tiler.utility.ActivityUtility
 import java.io.File
 import java.io.IOException
@@ -115,8 +117,28 @@ class TilesUploadActivity : AppCompatActivity() {
                 && squareMeter.isNotBlank() && packingSize.isNotBlank() && marketPrice.isNotBlank()
                 && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
                 && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
-                // post to the database
+                val databaseHandler = DatabaseHandler(this)
+                databaseHandler.addChibuCatalogTile(
+                    MyCatalogTilesModel(
+                        catalogTileId = 0,
+                        tileName = tileName.toString(),
+                        dimension = "$xDirectionDimen X $yDirectionDimen",
+                        tileSquareMeter = squareMeter.toString().toFloat(),
+                        packingSize = packingSize.toString().toInt(),
+                        marketPrice = marketPrice.toString().toDouble(),
+                        sellingPrice = sellingPrice.toString().toDouble(),
+                        warehouseName = warehouseName.toString(),
+                        phoneNumber = phoneNumber.toString(),
+                        originCountry = originCountry.toString(),
+                        availability = tileAvailability,
+                        tileImageString = tileImageString!!
+                    )
+                )
 
+                finish()
+                overridePendingTransition(0, 0) // remove this to see the difference
+                startActivity(intent)
+                overridePendingTransition(0, 0) // remove this to see the difference
             }
         }
     }

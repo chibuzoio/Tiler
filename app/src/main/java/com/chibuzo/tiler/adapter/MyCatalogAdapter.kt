@@ -1,5 +1,7 @@
 package com.chibuzo.tiler.adapter
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -8,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.databinding.RecyclerMyCatalogBinding
-import com.chibuzo.tiler.model.MyCatalogModel
+import com.chibuzo.tiler.model.MyCatalogTilesModel
 
-class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogModel>) :
+
+class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel>) :
     RecyclerView.Adapter<MyCatalogAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,13 +28,11 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogModel>) :
             holder.binding.myCatalogTileLayout.layoutParams = params
         }
 
+        val decodedString: ByteArray = Base64.decode(myCatalogTiles[position].tileImageString, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+
         Glide.with(holder.itemView.context)
-            .load(
-                ContextCompat.getDrawable(
-                    holder.itemView.context,
-                    myCatalogTiles[position].imageId
-                )
-            )
+            .load(bitmap)
             .transform(FitCenter(), RoundedCorners(11))
             .into(holder.binding.myCatalogTileImage)
 

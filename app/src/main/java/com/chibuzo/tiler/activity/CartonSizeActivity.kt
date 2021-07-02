@@ -15,10 +15,10 @@ class CartonSizeActivity : AppCompatActivity() {
         binding = ActivityCartonSizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator";
-        binding.totalSquareMeterInput.genericNumberDecimalInputLabel.text = "Total Square Meter";
-        binding.cartonSquareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton";
-        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Number Of Pieces Per Carton";
+        binding.cartonSizeCalculator.genericHeaderText.text = "Total Cartons And Pieces Calculator"
+        binding.totalSquareMeterInput.genericNumberDecimalInputLabel.text = "Total Square Meter"
+        binding.cartonSquareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton"
+        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Packing Size"
         binding.calculateCartonSize.genericButtonLabel.text = "Calculate";
 
         val totalSquareMeter = binding.totalSquareMeterInput.genericNumberDecimalInputEditor.text
