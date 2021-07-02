@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
@@ -12,6 +13,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -68,20 +70,6 @@ class TilesUploadActivity : AppCompatActivity() {
         binding.originCountryInput.genericTextInputLabel.text = "Made In"
         binding.uploadCustomTile.genericButtonLabel.text = "Save Tile"
 
-        /*
-        * tileNameInput
-        * xDirectionInputEditor
-        *yDirectionInputEditor
-        *squareMeterInput
-        * packingSizeInput
-        *marketPriceInput
-        * sellingPriceInput
-        * warehouseNameInput
-        * phoneNumberInput
-        * originCountryInput
-        * tileAvailabilityInput
-        * */
-
         val tileName = binding.tileNameInput.genericTextInputEditor.text
         val xDirectionDimen = binding.xDirectionInputEditor.text
         val yDirectionDimen = binding.yDirectionInputEditor.text
@@ -128,10 +116,15 @@ class TilesUploadActivity : AppCompatActivity() {
                 && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
                 && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
                 // post to the database
-                
+
             }
         }
     }
+
+//    private fun createTilesTable() {
+//        sqliteDatabase?.execSQL("create table if not exists chibucatalogtiles (" +
+//                "catalogTileId integer primary key autoincrement, )")
+//    }
 
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
