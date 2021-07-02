@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.chibuzo.tiler.model.MyCatalogTilesModel
 
 class DatabaseHandler(context: Context) :
@@ -14,7 +15,7 @@ class DatabaseHandler(context: Context) :
     companion object {
         private const val chibuCatalogTiles = "chibucatalogtiles"
         private const val databaseName = "computebone"
-        private const val databaseVersion = 1
+        private const val databaseVersion = 2
         private const val catalogTileId = "catalogTileId"
         private const val tileName = "tileName"
         private const val dimension = "dimension"
@@ -26,7 +27,7 @@ class DatabaseHandler(context: Context) :
         private const val phoneNumber = "phoneNumber"
         private const val originCountry = "originCountry"
         private const val availability = "availability"
-        private const val tileImageString = "tileImageString"
+        private const val tileImageName = "tileImageName"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -35,7 +36,7 @@ class DatabaseHandler(context: Context) :
                 "catalogTileId integer primary key autoincrement, tileName text, dimension text, " +
                 "tileSquareMeter real, packingSize integer, marketPrice real, sellingPrice real, " +
                 "warehouseName text, phoneNumber text, originCountry text, availability numeric, " +
-                "tileImageString text)"
+                "tileImageName text)"
         db?.execSQL(createCatalogTilesTable)
     }
 
@@ -49,7 +50,6 @@ class DatabaseHandler(context: Context) :
         val dataStore = writableDatabase
         val contentValues = ContentValues()
 
-        contentValues.put(catalogTileId, catalogTilesModel.catalogTileId)
         contentValues.put(tileName, catalogTilesModel.tileName)
         contentValues.put(dimension, catalogTilesModel.dimension)
         contentValues.put(tileSquareMeter, catalogTilesModel.tileSquareMeter)
@@ -60,7 +60,7 @@ class DatabaseHandler(context: Context) :
         contentValues.put(phoneNumber, catalogTilesModel.phoneNumber)
         contentValues.put(originCountry, catalogTilesModel.originCountry)
         contentValues.put(availability, catalogTilesModel.availability)
-        contentValues.put(tileImageString, catalogTilesModel.tileImageString)
+        contentValues.put(tileImageName, catalogTilesModel.tileImageName)
 
         val success = dataStore.insert(chibuCatalogTiles, null, contentValues)
         dataStore.close()
@@ -93,12 +93,14 @@ class DatabaseHandler(context: Context) :
                     phoneNumber = cursor.getString(cursor.getColumnIndex(phoneNumber)),
                     originCountry = cursor.getString(cursor.getColumnIndex(originCountry)),
                     availability = cursor.getInt(cursor.getColumnIndex(availability)) > 0,
-                    tileImageString = cursor.getString(cursor.getColumnIndex(tileImageString))
+                    tileImageName = cursor.getString(cursor.getColumnIndex(tileImageName))
                 )
 
                 chibuCatalogTilesList.add(catalogTilesModel)
             } while (cursor.moveToNext())
         }
+
+        Log.e("chibuCatalogTilesList", "chibuCatalogTilesList value here is $chibuCatalogTilesList")
 
         return chibuCatalogTilesList
     }
@@ -118,7 +120,7 @@ class DatabaseHandler(context: Context) :
         contentValues.put(phoneNumber, catalogTilesModel.phoneNumber)
         contentValues.put(originCountry, catalogTilesModel.originCountry)
         contentValues.put(availability, catalogTilesModel.availability)
-        contentValues.put(tileImageString, catalogTilesModel.tileImageString)
+        contentValues.put(tileImageName, catalogTilesModel.tileImageName)
 
         val success = dataStore.update(chibuCatalogTiles, contentValues,
             "$catalogTileId = ${catalogTilesModel.catalogTileId}", null)

@@ -18,7 +18,7 @@ class SquareMeterActivity : AppCompatActivity() {
         binding.squareMeterCalculator.genericHeaderText.text = "Square Meter Per Carton Calculator";
         binding.tileLengthInput.genericNumberDecimalInputLabel.text = "Length (in centimeter)";
         binding.tileWidthInput.genericNumberDecimalInputLabel.text = "Width (in centimeter)";
-        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Packing Size";
+        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Packing Size Per Carton";
         binding.calculateSquareMeter.genericButtonLabel.text = "Calculate";
 
         val tileWidth = binding.tileWidthInput.genericNumberDecimalInputEditor.text

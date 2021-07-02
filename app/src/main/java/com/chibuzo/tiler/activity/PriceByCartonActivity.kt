@@ -18,7 +18,7 @@ class PriceByCartonActivity : AppCompatActivity() {
         binding.priceByCartonCalculator.genericHeaderText.text = "Price By Carton Calculator";
         binding.numberOfCartonsInput.genericNumberDecimalInputLabel.text = "Number Of Cartons";
         binding.numberOfPiecesInput.genericNumberDecimalInputLabel.text = "Number Of Pieces";
-        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Packing Size";
+        binding.numberOfPiecesPerCartonInput.genericNumberDecimalInputLabel.text = "Packing Size Per Carton";
         binding.pricePerCartonInput.genericNumberDecimalInputLabel.text = "Price Per Carton";
         binding.calculatePriceByCarton.genericButtonLabel.text = "Calculate";
 

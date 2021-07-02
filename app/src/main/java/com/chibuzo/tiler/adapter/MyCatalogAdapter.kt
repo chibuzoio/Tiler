@@ -1,17 +1,19 @@
 package com.chibuzo.tiler.adapter
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.graphics.BitmapFactory
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.databinding.RecyclerMyCatalogBinding
 import com.chibuzo.tiler.model.MyCatalogTilesModel
-
+import java.io.File
 
 class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel>) :
     RecyclerView.Adapter<MyCatalogAdapter.MyViewHolder>() {
@@ -28,11 +30,14 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
             holder.binding.myCatalogTileLayout.layoutParams = params
         }
 
-        val decodedString: ByteArray = Base64.decode(myCatalogTiles[position].tileImageString, Base64.DEFAULT)
-        val bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        Log.e("arrayContents", "arrayContents here are $myCatalogTiles")
+
+        val contextWrapper = ContextWrapper(holder.itemView.context)
+        val directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE)
+        val file = File(directory, myCatalogTiles[position].tileImageName)
 
         Glide.with(holder.itemView.context)
-            .load(bitmap)
+            .load(file)
             .transform(FitCenter(), RoundedCorners(11))
             .into(holder.binding.myCatalogTileImage)
 

@@ -3,9 +3,9 @@ package com.chibuzo.tiler.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
@@ -28,13 +28,16 @@ import com.chibuzo.tiler.datastore.DatabaseHandler
 import com.chibuzo.tiler.model.MyCatalogTilesModel
 import com.chibuzo.tiler.utility.ActivityUtility
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class TilesUploadActivity : AppCompatActivity() {
     private val PERMISSION_CODE = 1001
     private var theBitmap: Bitmap? = null
+    private var tileImageName: String? = null
     private var tileImageString: String? = null
     private lateinit var binding: ActivityTilesUploadBinding
     private var photoFile: File? = null
@@ -117,6 +120,28 @@ class TilesUploadActivity : AppCompatActivity() {
                 && squareMeter.isNotBlank() && packingSize.isNotBlank() && marketPrice.isNotBlank()
                 && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
                 && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
+
+                // generate the image name here
+                tileImageName = "${System.currentTimeMillis()}.jpg"
+
+                // store imageString in the file system
+                val contextWrapper = ContextWrapper(applicationContext)
+                val directory: File = contextWrapper.getDir("imageDir", MODE_PRIVATE)
+                val file = File(directory, tileImageName)
+
+                if (!file.exists()) {
+                    Log.e("filePath", "File path value here is $file")
+
+                    try {
+                        val fileOutputStream = FileOutputStream(file)
+                        theBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+                        fileOutputStream.flush()
+                        fileOutputStream.close()
+                    } catch (exception: IOException) {
+                        exception.printStackTrace()
+                    }
+                }
+
                 val databaseHandler = DatabaseHandler(this)
                 databaseHandler.addChibuCatalogTile(
                     MyCatalogTilesModel(
@@ -131,14 +156,12 @@ class TilesUploadActivity : AppCompatActivity() {
                         phoneNumber = phoneNumber.toString(),
                         originCountry = originCountry.toString(),
                         availability = tileAvailability,
-                        tileImageString = tileImageString!!
+                        tileImageName = tileImageName!!
                     )
                 )
 
                 finish()
-                overridePendingTransition(0, 0) // remove this to see the difference
                 startActivity(intent)
-                overridePendingTransition(0, 0) // remove this to see the difference
             }
         }
     }
