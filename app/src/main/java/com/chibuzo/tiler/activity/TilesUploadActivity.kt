@@ -121,11 +121,6 @@ class TilesUploadActivity : AppCompatActivity() {
         }
     }
 
-//    private fun createTilesTable() {
-//        sqliteDatabase?.execSQL("create table if not exists chibucatalogtiles (" +
-//                "catalogTileId integer primary key autoincrement, )")
-//    }
-
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
