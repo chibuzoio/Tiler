@@ -2,7 +2,6 @@ package com.chibuzo.tiler.activity
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,8 +12,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -121,20 +118,20 @@ class TilesUploadActivity : AppCompatActivity() {
                 && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
                 && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
 
-                // generate the image name here
+                var tileImageWidth = 0
+                var tileImageHeight = 0
                 tileImageName = "${System.currentTimeMillis()}.jpg"
 
-                // store imageString in the file system
                 val contextWrapper = ContextWrapper(applicationContext)
                 val directory: File = contextWrapper.getDir("imageDir", MODE_PRIVATE)
                 val file = File(directory, tileImageName)
 
                 if (!file.exists()) {
-                    Log.e("filePath", "File path value here is $file")
-
                     try {
                         val fileOutputStream = FileOutputStream(file)
                         theBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+                        tileImageWidth = theBitmap!!.width
+                        tileImageHeight = theBitmap!!.height
                         fileOutputStream.flush()
                         fileOutputStream.close()
                     } catch (exception: IOException) {
@@ -156,7 +153,9 @@ class TilesUploadActivity : AppCompatActivity() {
                         phoneNumber = phoneNumber.toString(),
                         originCountry = originCountry.toString(),
                         availability = tileAvailability,
-                        tileImageName = tileImageName!!
+                        tileImageName = tileImageName!!,
+                        tileImageWidth = tileImageWidth,
+                        tileImageHeight = tileImageHeight
                     )
                 )
 
@@ -187,11 +186,9 @@ class TilesUploadActivity : AppCompatActivity() {
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                         startActivityForResult(takePictureIntent, CAPTURE_IMAGE_REQUEST)
                     }
-                } catch (ex: Exception) {
-                    displayMessage(baseContext, ex.message.toString())
+                } catch (exception: Exception) {
+                    exception.printStackTrace()
                 }
-            } else {
-                displayMessage(baseContext, "Null")
             }
         }
     }
@@ -209,10 +206,6 @@ class TilesUploadActivity : AppCompatActivity() {
 
         mCurrentPhotoPath = image.absolutePath
         return image
-    }
-
-    private fun displayMessage(context: Context, message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -237,8 +230,6 @@ class TilesUploadActivity : AppCompatActivity() {
             } else{
                 MediaStore.Images.Media.getBitmap(contentResolver, data?.data)
             }
-        } else {
-            displayMessage(baseContext, "Request cancelled or something went wrong.")
         }
     }
 }

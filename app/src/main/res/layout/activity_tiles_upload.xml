@@ -16,6 +16,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:adjustViewBounds="true"
                 android:layout_margin="11.111dp"
                 android:id="@+id/tilesUploadImage"
                 app:layout_constraintTop_toTopOf="parent"

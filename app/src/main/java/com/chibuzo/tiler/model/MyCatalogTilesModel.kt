@@ -11,6 +11,8 @@ data class MyCatalogTilesModel(var catalogTileId: Int,
                                var phoneNumber: String,
                                var originCountry: String,
                                var availability: Boolean,
-                               var tileImageName: String)
+                               var tileImageName: String,
+                               var tileImageWidth: Int,
+                               var tileImageHeight: Int)
 
 
