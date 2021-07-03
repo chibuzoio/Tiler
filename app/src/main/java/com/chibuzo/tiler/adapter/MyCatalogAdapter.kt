@@ -30,8 +30,6 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
             holder.binding.myCatalogTileLayout.layoutParams = params
         }
 
-        Log.e("arrayContents", "arrayContents here are $myCatalogTiles")
-
         val contextWrapper = ContextWrapper(holder.itemView.context)
         val directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE)
         val file = File(directory, myCatalogTiles[position].tileImageName)
