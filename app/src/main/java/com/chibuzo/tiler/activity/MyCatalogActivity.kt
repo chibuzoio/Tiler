@@ -18,6 +18,10 @@ class MyCatalogActivity : AppCompatActivity() {
         binding = ActivityMyCatalogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.myCatalogMenuLayout.tileEditMenu.genericMenuText.text = "Edit Tile"
+        binding.myCatalogMenuLayout.tileDeleteMenu.genericMenuText.text = "Delete Tile"
+        binding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputLabel.text = "Available"
+
         binding.myCatalogRecycler.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.myCatalogRecycler.itemAnimator = DefaultItemAnimator()
@@ -25,7 +29,7 @@ class MyCatalogActivity : AppCompatActivity() {
         val databaseHandler = DatabaseHandler(this)
         val myCatalogTiles = databaseHandler.getAllCatalogTiles()
 
-        binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles)
+        binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles, binding)
 
         binding.addCatalogTilesButton.setOnClickListener {
             val intent = Intent(this, TilesUploadActivity::class.java)

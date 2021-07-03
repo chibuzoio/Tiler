@@ -12,10 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <include
-        android:id="@+id/includedHeader"
-        layout="@layout/include_header"/>
-
     <LinearLayout
         android:id="@+id/addCatalogTilesButton"
         android:gravity="center"
@@ -35,6 +31,15 @@
             android:layout_height="43dp"/>
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/myCatalogMenuLayout"
+        android:visibility="gone"
+        layout="@layout/include_generic_menu_layout"/>
+
+    <include
+        android:id="@+id/includedHeader"
+        layout="@layout/include_header"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
