@@ -22,8 +22,10 @@ class MyCatalogActivity : AppCompatActivity() {
         binding.myCatalogMenuLayout.tileDeleteMenu.genericMenuText.text = "Delete Tile"
         binding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputLabel.text = "Available"
 
-        binding.myCatalogRecycler.layoutManager =
+        val staggeredGridLayoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        staggeredGridLayoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        binding.myCatalogRecycler.layoutManager = staggeredGridLayoutManager
         binding.myCatalogRecycler.itemAnimator = DefaultItemAnimator()
 
         val databaseHandler = DatabaseHandler(this)

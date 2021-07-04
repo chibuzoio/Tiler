@@ -2,14 +2,19 @@ package com.chibuzo.tiler.adapter
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.chibuzo.tiler.R
 import com.chibuzo.tiler.databinding.ActivityMyCatalogBinding
 import com.chibuzo.tiler.databinding.RecyclerMyCatalogBinding
