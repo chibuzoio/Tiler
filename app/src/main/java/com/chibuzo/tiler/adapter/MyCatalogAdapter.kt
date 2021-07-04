@@ -2,6 +2,7 @@ package com.chibuzo.tiler.adapter
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.chibuzo.tiler.R
+import com.chibuzo.tiler.activity.GenericTileDisplayActivity
 import com.chibuzo.tiler.databinding.ActivityMyCatalogBinding
 import com.chibuzo.tiler.databinding.RecyclerMyCatalogBinding
 import com.chibuzo.tiler.datastore.DatabaseHandler
@@ -44,8 +46,29 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
             holder.binding.availabilityIndicator.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.danger))
         }
 
+        holder.binding.myCatalogTileLayout.setOnClickListener {
+            var intent = Intent(holder.itemView.context, GenericTileDisplayActivity::class.java)
+            intent.putExtra("catalogTileId", myCatalogTiles[position].catalogTileId.toString())
+            intent.putExtra("tileName", myCatalogTiles[position].tileName)
+            intent.putExtra("dimension", myCatalogTiles[position].dimension)
+            intent.putExtra("tileSquareMeter", myCatalogTiles[position].tileSquareMeter.toString())
+            intent.putExtra("packingSize", myCatalogTiles[position].packingSize.toString())
+            intent.putExtra("marketPrice", myCatalogTiles[position].marketPrice.toString())
+            intent.putExtra("sellingPrice", myCatalogTiles[position].sellingPrice.toString())
+            intent.putExtra("warehouseName", myCatalogTiles[position].warehouseName)
+            intent.putExtra("phoneNumber", myCatalogTiles[position].phoneNumber)
+            intent.putExtra("originCountry", myCatalogTiles[position].originCountry)
+            intent.putExtra("availability", myCatalogTiles[position].availability.toString())
+            intent.putExtra("tileImageName", myCatalogTiles[position].tileImageName)
+            holder.itemView.context.startActivity(intent)
+        }
+
         parentBinding.myCatalogMenuLayout.genericMenuLayout.setOnClickListener {
             parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
+        }
+
+        parentBinding.myCatalogMenuLayout.tileEditMenu.genericMenuLayout.setOnClickListener {
+
         }
 
         parentBinding.myCatalogMenuLayout.tileDeleteMenu.genericMenuLayout.setOnClickListener {

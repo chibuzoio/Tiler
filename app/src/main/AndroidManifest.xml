@@ -71,6 +71,9 @@
         <activity
             android:screenOrientation="portrait"
             android:name="com.chibuzo.tiler.activity.TilesUploadActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.chibuzo.tiler.activity.GenericTileDisplayActivity" />
     </application>
 
 </manifest>
