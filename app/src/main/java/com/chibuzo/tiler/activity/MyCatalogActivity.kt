@@ -2,7 +2,9 @@ package com.chibuzo.tiler.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.chibuzo.tiler.adapter.MyCatalogAdapter
@@ -21,6 +23,16 @@ class MyCatalogActivity : AppCompatActivity() {
         binding.myCatalogMenuLayout.tileEditMenu.genericMenuText.text = "Edit Tile"
         binding.myCatalogMenuLayout.tileDeleteMenu.genericMenuText.text = "Delete Tile"
         binding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputLabel.text = "Available"
+        binding.tileNameInput.genericTextInputLabel.text = "Tile Name"
+        binding.dimensionInputLabel.text = "Dimension"
+        binding.squareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton"
+        binding.packingSizeInput.genericNumberDecimalInputLabel.text = "Packing Size Per Carton"
+        binding.marketPriceInput.genericNumberDecimalInputLabel.text = "Market Price"
+        binding.sellingPriceInput.genericNumberDecimalInputLabel.text = "Selling Price"
+        binding.warehouseNameInput.genericTextInputLabel.text = "Warehouse"
+        binding.phoneNumberInput.genericNumberInputLabel.text = "Phone Number"
+        binding.originCountryInput.genericTextInputLabel.text = "Made In"
+        binding.updateCustomTile.genericButtonLabel.text = "Update Tile"
 
         val staggeredGridLayoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -36,6 +48,14 @@ class MyCatalogActivity : AppCompatActivity() {
         binding.addCatalogTilesButton.setOnClickListener {
             val intent = Intent(this, TilesUploadActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.tileCatalogEditorLayout.isVisible) {
+            binding.tileCatalogEditorLayout.visibility = View.GONE
+        } else {
+            finish()
         }
     }
 }

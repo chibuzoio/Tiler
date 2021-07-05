@@ -67,8 +67,71 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
             parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
         }
 
-        parentBinding.myCatalogMenuLayout.tileEditMenu.genericMenuLayout.setOnClickListener {
+        parentBinding.updateCustomTile.genericButtonLayout.setOnClickListener {
+            val tileName = parentBinding.tileNameInput.genericTextInputEditor.text
+            val xDirectionDimen = parentBinding.xDirectionInputEditor.text
+            val yDirectionDimen = parentBinding.yDirectionInputEditor.text
+            val squareMeter = parentBinding.squareMeterInput.genericNumberDecimalInputEditor.text
+            val packingSize = parentBinding.packingSizeInput.genericNumberDecimalInputEditor.text
+            val marketPrice = parentBinding.marketPriceInput.genericNumberDecimalInputEditor.text
+            val sellingPrice = parentBinding.sellingPriceInput.genericNumberDecimalInputEditor.text
+            val warehouseName = parentBinding.warehouseNameInput.genericTextInputEditor.text
+            val phoneNumber = parentBinding.phoneNumberInput.genericNumberInputEditor.text
+            val originCountry = parentBinding.originCountryInput.genericTextInputEditor.text
 
+            if (tileName.isNotBlank() && xDirectionDimen.isNotBlank()
+                && yDirectionDimen.isNotBlank() && squareMeter.isNotBlank()
+                && packingSize.isNotBlank() && marketPrice.isNotBlank()
+                && sellingPrice.isNotBlank() && warehouseName.isNotBlank()
+                && phoneNumber.isNotBlank() && originCountry.isNotBlank()) {
+                myCatalogTiles[gottenPosition].tileName = tileName.toString().trim()
+                myCatalogTiles[gottenPosition].dimension = "${xDirectionDimen.trim()} X ${yDirectionDimen.trim()}"
+                myCatalogTiles[gottenPosition].tileSquareMeter = squareMeter.toString().trim().toFloat()
+                myCatalogTiles[gottenPosition].packingSize = packingSize.toString().trim().toInt()
+                myCatalogTiles[gottenPosition].marketPrice = marketPrice.toString().trim().toDouble()
+                myCatalogTiles[gottenPosition].sellingPrice = sellingPrice.toString().trim().toDouble()
+                myCatalogTiles[gottenPosition].warehouseName = warehouseName.toString().trim()
+                myCatalogTiles[gottenPosition].phoneNumber = phoneNumber.toString().trim()
+                myCatalogTiles[gottenPosition].originCountry = originCountry.toString().trim()
+
+                val databaseHandler = DatabaseHandler(holder.itemView.context)
+                databaseHandler.updateCatalogTiles(myCatalogTiles[gottenPosition])
+
+                parentBinding.tileCatalogEditorLayout.visibility = View.GONE
+
+                notifyDataSetChanged()
+            }
+        }
+
+        parentBinding.myCatalogMenuLayout.tileEditMenu.genericMenuLayout.setOnClickListener {
+            val contextWrapper = ContextWrapper(holder.itemView.context)
+            val directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE)
+            val file = File(directory, myCatalogTiles[gottenPosition].tileImageName)
+
+            Glide.with(holder.itemView.context)
+                .load(file)
+                .transform(FitCenter(), RoundedCorners(11))
+                .into(parentBinding.tileUpdateImage)
+
+            parentBinding.tileNameInput.genericTextInputEditor.setText(myCatalogTiles[gottenPosition].tileName)
+
+            val dimensionString = myCatalogTiles[gottenPosition].dimension
+            val xIndex = dimensionString.indexOf("X")
+            val xDirectionDimension = dimensionString.substring(0, xIndex).trim()
+            val yDirectionDimension = dimensionString.substring(xIndex + 1).trim()
+
+            parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
+            parentBinding.tileCatalogEditorLayout.visibility = View.VISIBLE
+
+            parentBinding.xDirectionInputEditor.setText(xDirectionDimension)
+            parentBinding.yDirectionInputEditor.setText(yDirectionDimension)
+            parentBinding.squareMeterInput.genericNumberDecimalInputEditor.setText(myCatalogTiles[gottenPosition].tileSquareMeter.toString())
+            parentBinding.packingSizeInput.genericNumberDecimalInputEditor.setText(myCatalogTiles[gottenPosition].packingSize.toString())
+            parentBinding.marketPriceInput.genericNumberDecimalInputEditor.setText(myCatalogTiles[gottenPosition].marketPrice.toString())
+            parentBinding.sellingPriceInput.genericNumberDecimalInputEditor.setText(myCatalogTiles[gottenPosition].sellingPrice.toString())
+            parentBinding.warehouseNameInput.genericTextInputEditor.setText(myCatalogTiles[gottenPosition].warehouseName)
+            parentBinding.phoneNumberInput.genericNumberInputEditor.setText(myCatalogTiles[gottenPosition].phoneNumber)
+            parentBinding.originCountryInput.genericTextInputEditor.setText(myCatalogTiles[gottenPosition].originCountry)
         }
 
         parentBinding.myCatalogMenuLayout.tileDeleteMenu.genericMenuLayout.setOnClickListener {
