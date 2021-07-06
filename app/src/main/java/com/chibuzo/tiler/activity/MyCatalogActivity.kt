@@ -43,6 +43,8 @@ class MyCatalogActivity : AppCompatActivity() {
         val databaseHandler = DatabaseHandler(this)
         val myCatalogTiles = databaseHandler.getAllCatalogTiles()
 
+//        myCatalogTiles.shuffle()
+
         binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles, binding)
 
         binding.addCatalogTilesButton.setOnClickListener {

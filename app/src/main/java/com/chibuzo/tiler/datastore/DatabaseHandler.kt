@@ -72,9 +72,9 @@ class DatabaseHandler(context: Context) :
 
     fun getAllCatalogTiles(): ArrayList<MyCatalogTilesModel> {
         val chibuCatalogTilesList = ArrayList<MyCatalogTilesModel>()
-        val query = "select * from $chibuCatalogTiles"
+        val query = "select * from $chibuCatalogTiles order by $catalogTileId desc"
         val dataStore = readableDatabase
-        var cursor: Cursor?
+        val cursor: Cursor?
 
         try {
             cursor = dataStore.rawQuery(query, null)
