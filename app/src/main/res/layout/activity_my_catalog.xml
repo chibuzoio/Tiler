@@ -38,6 +38,11 @@
         android:visibility="gone"
         layout="@layout/include_generic_menu_layout"/>
 
+    <include
+        android:id="@+id/toolbarMenuLayout"
+        android:visibility="gone"
+        layout="@layout/include_toolbar_menu_layout"/>
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/tileCatalogEditorLayout"
         android:visibility="gone"
@@ -192,8 +197,8 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <include
-        android:id="@+id/includedHeader"
-        layout="@layout/include_header"/>
+        android:id="@+id/includeToolbarLayout"
+        layout="@layout/include_generic_toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

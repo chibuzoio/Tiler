@@ -197,8 +197,8 @@
     <!--Add header layout here-->
 
     <include
-        android:id="@+id/includedHeader"
-        layout="@layout/include_header"/>
+        android:id="@+id/includeToolbarLayout"
+        layout="@layout/include_generic_toolbar"/>
 
     <LinearLayout
         android:id="@+id/addCatalogTilesButton"

@@ -25,6 +25,9 @@ class MyCatalogActivity : AppCompatActivity() {
         binding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputLabel.text = "Available"
         binding.tileNameInput.genericTextInputLabel.text = "Tile Name"
         binding.dimensionInputLabel.text = "Dimension"
+        binding.toolbarMenuLayout.toolbarCloseMenu.genericMenuText.text = "Close"
+        binding.toolbarMenuLayout.toolbarShuffleTileMenu.genericMenuText.text = "Shuffle Tiles"
+        binding.toolbarMenuLayout.toolbarOrderTileMenu.genericMenuText.text = "Order Tiles"
         binding.squareMeterInput.genericNumberDecimalInputLabel.text = "Square Meter Per Carton"
         binding.packingSizeInput.genericNumberDecimalInputLabel.text = "Packing Size Per Carton"
         binding.marketPriceInput.genericNumberDecimalInputLabel.text = "Market Price"
@@ -46,6 +49,22 @@ class MyCatalogActivity : AppCompatActivity() {
 //        myCatalogTiles.shuffle()
 
         binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles, binding)
+
+        binding.toolbarMenuLayout.toolbarCloseMenu.genericMenuLayout.setOnClickListener {
+            binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
+        }
+
+        binding.toolbarMenuLayout.toolbarMenuLayout.setOnClickListener {
+            binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
+        }
+
+        binding.includeToolbarLayout.genericToolbarLayout.setOnClickListener {
+            if (binding.toolbarMenuLayout.toolbarMenuLayout.isVisible) {
+                binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
+            } else {
+                binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.VISIBLE
+            }
+        }
 
         binding.addCatalogTilesButton.setOnClickListener {
             val intent = Intent(this, TilesUploadActivity::class.java)

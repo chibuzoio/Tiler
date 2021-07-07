@@ -57,8 +57,8 @@
         layout="@layout/include_calculation_result"/>
     
     <include
-        android:id="@+id/includedHeader"
-        layout="@layout/include_header"/>
+        android:id="@+id/includeToolbarLayout"
+        layout="@layout/include_generic_toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,8 +12,8 @@
         android:layout_height="match_parent"/>
 
     <include
-        android:id="@+id/includedHeader"
-        layout="@layout/include_header"/>
+        android:id="@+id/includeToolbarLayout"
+        layout="@layout/include_generic_toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
