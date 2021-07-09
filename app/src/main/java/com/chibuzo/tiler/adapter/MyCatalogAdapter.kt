@@ -64,6 +64,8 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
         }
 
         parentBinding.myCatalogMenuLayout.genericMenuLayout.setOnClickListener {
+            parentBinding.myCatalogMenuLayout.genericMenuInnerLayout.visibility = View.VISIBLE
+            parentBinding.myCatalogMenuLayout.genericDeleteDialogLayout.visibility = View.GONE
             parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
         }
 
@@ -135,11 +137,24 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
         }
 
         parentBinding.myCatalogMenuLayout.tileDeleteMenu.genericMenuLayout.setOnClickListener {
+            parentBinding.myCatalogMenuLayout.genericDeleteDialogLayout.visibility = View.VISIBLE
+            parentBinding.myCatalogMenuLayout.genericMenuInnerLayout.visibility = View.GONE
+        }
+
+        parentBinding.myCatalogMenuLayout.continueDeleteButton.genericButtonLayout.setOnClickListener {
+            parentBinding.myCatalogMenuLayout.genericMenuInnerLayout.visibility = View.VISIBLE
+            parentBinding.myCatalogMenuLayout.genericDeleteDialogLayout.visibility = View.GONE
             parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
             val databaseHandler = DatabaseHandler(holder.itemView.context)
             databaseHandler.deleteCatalogTiles(myCatalogTiles[gottenPosition])
             myCatalogTiles.removeAt(gottenPosition)
             notifyDataSetChanged()
+        }
+
+        parentBinding.myCatalogMenuLayout.cancelDeleteButton.genericButtonLayout.setOnClickListener {
+            parentBinding.myCatalogMenuLayout.genericMenuInnerLayout.visibility = View.VISIBLE
+            parentBinding.myCatalogMenuLayout.genericDeleteDialogLayout.visibility = View.GONE
+            parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
         }
 
         holder.binding.myCatalogTileLayout.setOnLongClickListener {

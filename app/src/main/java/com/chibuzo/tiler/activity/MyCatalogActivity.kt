@@ -20,6 +20,8 @@ class MyCatalogActivity : AppCompatActivity() {
         binding = ActivityMyCatalogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.myCatalogMenuLayout.cancelDeleteButton.genericButtonLabel.text = "Cancel"
+        binding.myCatalogMenuLayout.continueDeleteButton.genericButtonLabel.text = "Delete"
         binding.myCatalogMenuLayout.tileEditMenu.genericMenuText.text = "Edit Tile"
         binding.myCatalogMenuLayout.tileDeleteMenu.genericMenuText.text = "Delete Tile"
         binding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputLabel.text = "Available"
