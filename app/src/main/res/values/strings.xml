@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tiler</string>
+    <string name="shared_preferences_key">chibuzo</string>
+    <string name="order_tile_settings_key">tileSortType</string>
+    <string name="order_tile_settings">Order Tiles</string>
+    <string name="shuffle_tile_settings">Shuffle Tiles</string>
     <string-array name="booleanString">
         <item>False</item>
         <item>True</item>

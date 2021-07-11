@@ -1,21 +1,30 @@
 package com.chibuzo.tiler.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.chibuzo.tiler.R
 import com.chibuzo.tiler.adapter.MyCatalogAdapter
 import com.chibuzo.tiler.databinding.ActivityMyCatalogBinding
 import com.chibuzo.tiler.datastore.DatabaseHandler
+import com.chibuzo.tiler.model.MyCatalogTilesModel
+
 
 class MyCatalogActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyCatalogBinding
+    private var sharedPreferences: SharedPreferences? = null
+    private var sharedPreferencesEditor: SharedPreferences.Editor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        sharedPreferences = applicationContext.getSharedPreferences(getString(R.string.shared_preferences_key), MODE_PRIVATE)
+        sharedPreferencesEditor = sharedPreferences?.edit()
 
         binding = ActivityMyCatalogBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,11 +55,30 @@ class MyCatalogActivity : AppCompatActivity() {
         binding.myCatalogRecycler.itemAnimator = DefaultItemAnimator()
 
         val databaseHandler = DatabaseHandler(this)
-        val myCatalogTiles = databaseHandler.getAllCatalogTiles()
+        var myCatalogTiles = databaseHandler.getAllCatalogTiles()
 
-//        myCatalogTiles.shuffle()
+        val sortTilesMenuType = sharedPreferences?.getString(getString(R.string.order_tile_settings_key), "")
+
+        if (sortTilesMenuType.equals(getString(R.string.shuffle_tile_settings))) {
+            myCatalogTiles.shuffle()
+        }
 
         binding.myCatalogRecycler.adapter = MyCatalogAdapter(myCatalogTiles, binding)
+
+        binding.toolbarMenuLayout.toolbarShuffleTileMenu.genericMenuLayout.setOnClickListener {
+            binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
+            sharedPreferencesEditor?.putString(getString(R.string.order_tile_settings_key), getString(R.string.shuffle_tile_settings))?.apply()
+            myCatalogTiles.shuffle()
+            binding.myCatalogRecycler.adapter?.notifyDataSetChanged()
+        }
+
+        binding.toolbarMenuLayout.toolbarOrderTileMenu.genericMenuLayout.setOnClickListener {
+            binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
+            sharedPreferencesEditor?.putString(getString(R.string.order_tile_settings_key), getString(R.string.order_tile_settings))?.apply()
+            myCatalogTiles.clear()
+            myCatalogTiles.addAll(databaseHandler.getAllCatalogTiles())
+            binding.myCatalogRecycler.adapter?.notifyDataSetChanged()
+        }
 
         binding.toolbarMenuLayout.toolbarCloseMenu.genericMenuLayout.setOnClickListener {
             binding.toolbarMenuLayout.toolbarMenuLayout.visibility = View.GONE
