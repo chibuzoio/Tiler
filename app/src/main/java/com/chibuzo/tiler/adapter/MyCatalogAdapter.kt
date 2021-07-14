@@ -40,7 +40,7 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
 
         holder.binding.myCatalogTileName.text = myCatalogTiles[position].tileName
 
-        if (myCatalogTiles[position].availability) {
+        if (myCatalogTiles[position].availability == 1) {
             holder.binding.availabilityIndicator.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.messengerChatmateStatus))
         } else {
             holder.binding.availabilityIndicator.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.danger))
@@ -155,6 +155,31 @@ class MyCatalogAdapter(private val myCatalogTiles: ArrayList<MyCatalogTilesModel
             parentBinding.myCatalogMenuLayout.genericMenuInnerLayout.visibility = View.VISIBLE
             parentBinding.myCatalogMenuLayout.genericDeleteDialogLayout.visibility = View.GONE
             parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
+        }
+
+        parentBinding.myCatalogMenuLayout.tileAvailabilityMenu.genericSwitchInputEditor.setOnCheckedChangeListener { _, isChecked ->
+            var valueChanged = false
+
+            if (isChecked) {
+                if (myCatalogTiles[gottenPosition].availability == 0) {
+                    myCatalogTiles[gottenPosition].availability = 1
+                    valueChanged = true
+                }
+            } else {
+                if (myCatalogTiles[gottenPosition].availability == 1) {
+                    myCatalogTiles[gottenPosition].availability = 0
+                    valueChanged = true
+                }
+            }
+
+            if (valueChanged) {
+                val databaseHandler = DatabaseHandler(holder.itemView.context)
+                databaseHandler.updateCatalogTiles(myCatalogTiles[gottenPosition])
+
+                parentBinding.myCatalogMenuLayout.genericMenuLayout.visibility = View.GONE
+
+                notifyDataSetChanged()
+            }
         }
 
         holder.binding.myCatalogTileLayout.setOnLongClickListener {

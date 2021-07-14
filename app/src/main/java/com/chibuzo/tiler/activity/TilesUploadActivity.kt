@@ -12,6 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -30,8 +31,8 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class TilesUploadActivity : AppCompatActivity() {
+    private var tileAvailability = 1;
     private val PERMISSION_CODE = 1001
     private var theBitmap: Bitmap? = null
     private var tileImageName: String? = null
@@ -82,13 +83,12 @@ class TilesUploadActivity : AppCompatActivity() {
         val warehouseName = binding.warehouseNameInput.genericTextInputEditor.text
         val phoneNumber = binding.phoneNumberInput.genericNumberInputEditor.text
         val originCountry = binding.originCountryInput.genericTextInputEditor.text
-        val tileAvailability = binding.tileAvailabilityInput.genericSwitchInputEditor.isChecked
 
         binding.tileAvailabilityInput.genericSwitchInputEditor.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
+                tileAvailability = 1
             } else {
-
+                tileAvailability = 0
             }
         }
 

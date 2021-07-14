@@ -10,7 +10,7 @@ data class MyCatalogTilesModel(var catalogTileId: Int,
                                var warehouseName: String,
                                var phoneNumber: String,
                                var originCountry: String,
-                               var availability: Boolean,
+                               var availability: Int,
                                var tileImageName: String,
                                var tileImageWidth: Int,
                                var tileImageHeight: Int)

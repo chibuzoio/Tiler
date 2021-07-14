@@ -95,7 +95,7 @@ class DatabaseHandler(context: Context) :
                     warehouseName = cursor.getString(cursor.getColumnIndex(warehouseName)),
                     phoneNumber = cursor.getString(cursor.getColumnIndex(phoneNumber)),
                     originCountry = cursor.getString(cursor.getColumnIndex(originCountry)),
-                    availability = cursor.getInt(cursor.getColumnIndex(availability)) > 0,
+                    availability = cursor.getInt(cursor.getColumnIndex(availability)),
                     tileImageName = cursor.getString(cursor.getColumnIndex(tileImageName)),
                     tileImageWidth = cursor.getInt(cursor.getColumnIndex(tileImageWidth)),
                     tileImageHeight = cursor.getInt(cursor.getColumnIndex(tileImageHeight))

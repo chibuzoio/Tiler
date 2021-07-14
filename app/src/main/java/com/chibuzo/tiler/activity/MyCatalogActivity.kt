@@ -3,6 +3,7 @@ package com.chibuzo.tiler.activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -12,8 +13,7 @@ import com.chibuzo.tiler.R
 import com.chibuzo.tiler.adapter.MyCatalogAdapter
 import com.chibuzo.tiler.databinding.ActivityMyCatalogBinding
 import com.chibuzo.tiler.datastore.DatabaseHandler
-import com.chibuzo.tiler.model.MyCatalogTilesModel
-
+import java.lang.StringBuilder
 
 class MyCatalogActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyCatalogBinding
